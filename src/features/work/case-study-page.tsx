@@ -54,7 +54,11 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 </a>
               )}
             </div>
-            <CaseStudyVisual visual={study.visual} title={study.title} />
+            <CaseStudyVisual
+              visual={study.visual}
+              title={study.title}
+              image={study.image}
+            />
           </div>
         </Container>
       </div>

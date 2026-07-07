@@ -41,6 +41,7 @@ export function SelectedWorkSection() {
                   <CaseStudyVisual
                     visual={study.visual}
                     title={study.title}
+                    image={study.image}
                     className="mb-6"
                   />
                   <Badge className="w-fit">{study.category}</Badge>

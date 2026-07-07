@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 import type { CaseStudyVisual } from "@/types";
 
@@ -14,14 +16,35 @@ const visualStyles: Record<CaseStudyVisual, string> = {
 type CaseStudyVisualProps = {
   visual: CaseStudyVisual;
   title: string;
+  image?: string;
   className?: string;
 };
 
 export function CaseStudyVisual({
   visual,
   title,
+  image,
   className,
 }: CaseStudyVisualProps) {
+  if (image) {
+    return (
+      <div
+        className={cn(
+          "relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted shadow-sm",
+          className,
+        )}
+      >
+        <Image
+          src={image}
+          alt={`Screenshot of ${title}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(

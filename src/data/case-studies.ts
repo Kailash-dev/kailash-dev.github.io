@@ -6,6 +6,7 @@ export const caseStudies: CaseStudy[] = [
     title: "SafeWork Global",
     category: "Compliance Marketplace",
     visual: "portal",
+    image: "/images/projects/safework-global.jpg",
     client: "SafeWork Global",
     liveUrl: "https://safeworkglobal.com",
     summary:
@@ -35,6 +36,7 @@ export const caseStudies: CaseStudy[] = [
     title: "VyaparPost",
     category: "SaaS Product",
     visual: "design",
+    image: "/images/projects/vyaparpost.jpg",
     client: "VyaparPost",
     liveUrl: "https://vyaparpost.in",
     summary:
@@ -64,6 +66,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Vendor Infra",
     category: "B2B Industry Platform",
     visual: "portal",
+    image: "/images/projects/vendor-infra.jpg",
     client: "Vendor Infra",
     liveUrl: "https://vendorinfra.com",
     summary:

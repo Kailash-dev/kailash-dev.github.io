@@ -23,6 +23,7 @@ export type CaseStudy = {
   capabilities: string[];
   featured: boolean;
   visual: CaseStudyVisual;
+  image?: string;
   liveUrl?: string;
   client?: string;
 };

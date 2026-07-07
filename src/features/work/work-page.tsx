@@ -25,7 +25,11 @@ export function WorkPage() {
               <li key={study.slug}>
                 <FadeIn delay={index * 0.04}>
                   <article className="group grid gap-8 lg:grid-cols-2 lg:items-center">
-                    <CaseStudyVisual visual={study.visual} title={study.title} />
+                    <CaseStudyVisual
+                      visual={study.visual}
+                      title={study.title}
+                      image={study.image}
+                    />
                     <div>
                       <Badge>{study.category}</Badge>
                       <Heading as="h2" className="mt-4 text-2xl md:text-3xl">
