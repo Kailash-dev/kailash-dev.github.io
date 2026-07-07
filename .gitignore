@@ -50,3 +50,7 @@ Thumbs.db
 
 # Legacy Angular (removed)
 /.angular
+
+# Agent session logs (local only)
+/history/
+/logs/
