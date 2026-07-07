@@ -1,0 +1,6 @@
+{
+  "install": "npm install",
+  "build": {
+    "command": "npm run build"
+  }
+}

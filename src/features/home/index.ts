@@ -1,0 +1,6 @@
+export { HeroSection } from "./hero-section";
+export { WhoIHelpSection } from "./who-i-help-section";
+export { ServicesPreviewSection } from "./services-preview-section";
+export { SelectedWorkSection } from "./selected-work-section";
+export { ProcessSnapshotSection } from "./process-snapshot-section";
+export { HomeCtaSection } from "./home-cta-section";

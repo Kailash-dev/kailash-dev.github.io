@@ -1,0 +1,54 @@
+---
+description: Autonomous founding-engineer workflow for Kailash Brand Website
+alwaysApply: true
+---
+
+# Autonomous Engineering Rules
+
+## Source of Truth
+
+- **AI.md is law.** Every implementation must align with AI.md principles, positioning, and constraints.
+- **Agents.md** defines the mandatory workflow and quality gates.
+
+## Autonomy
+
+- Work fully autonomously. **Never ask the user questions** unless blocked by missing secrets (API keys, deploy tokens, third-party credentials).
+- Infer requirements from AI.md, docs/, and existing codebase conventions.
+- Take ownership end-to-end: audit → implement → verify → ship.
+
+## Implementation Standards
+
+- **Full implementations only.** No placeholders, lorem ipsum, skeleton pages, or TODO stubs.
+- No fake stats, skill bars, logo walls, resume pages, or developer clichés (per AI.md).
+- Position Kailash as **Product Engineering Partner**, not a freelancer or framework developer.
+- Write copy for founders and decision makers, not developers.
+
+## Design
+
+- Match AI.md brand: Apple / Stripe / Linear minimal style.
+- Large whitespace, beautiful typography, content first, motion second.
+- Use design tokens from `src/styles/globals.css` — no magic values in components.
+
+## Code Quality
+
+- Strict TypeScript, reusable components, composition over duplication.
+- Server Components by default; `"use client"` only when needed.
+- Thin pages in `src/app/`, fat features in `src/features/`.
+
+## Verification
+
+After major changes, run until green:
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+Fix all errors before committing. Do not stop at first failure.
+
+## Git
+
+- Never commit directly to main.
+- Use conventional commits: `feat:`, `fix:`, `chore:`.
+- Push branch and open PR with `gh pr create` when work is complete.
