@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/utils";
 import type { CaseStudy } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
@@ -6,7 +7,7 @@ export const caseStudies: CaseStudy[] = [
     title: "SafeWork Global",
     category: "Compliance Marketplace",
     visual: "portal",
-    image: "/images/projects/safework-global.jpg",
+    image: withBasePath("/images/projects/safework-global.jpg"),
     client: "SafeWork Global",
     liveUrl: "https://safeworkglobal.com",
     summary:
@@ -37,7 +38,7 @@ export const caseStudies: CaseStudy[] = [
     title: "VyaparPost",
     category: "Founder Product · SaaS",
     visual: "design",
-    image: "/images/projects/vyaparpost.jpg",
+    image: withBasePath("/images/projects/vyaparpost.jpg"),
     liveUrl: "https://vyaparpost.in",
     summary:
       "My own SaaS product — festival marketing posts for Indian shop owners, ready in 5 minutes, sized for WhatsApp, with shop details auto-filled.",
@@ -67,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Vendor Infra",
     category: "B2B Industry Platform",
     visual: "portal",
-    image: "/images/projects/vendor-infra.jpg",
+    image: withBasePath("/images/projects/vendor-infra.jpg"),
     client: "Vendor Infra",
     liveUrl: "https://vendorinfra.com",
     summary:

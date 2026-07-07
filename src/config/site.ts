@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { withBasePath } from "@/lib/utils";
+
 export const siteConfig = {
   name: "Kailash",
   fullName: "Kailash Gayari",
@@ -7,14 +9,14 @@ export const siteConfig = {
   description:
     "I help founders and growing teams design, build, and ship production-ready web and mobile software — from architecture through deployment.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash.dev",
-  ogImage: "/opengraph-image",
+  ogImage: withBasePath("/opengraph-image"),
   locale: "en_US",
   author: {
     name: "Kailash Gayari",
     email: "hello@kailash.dev",
     initials: "KG",
     role: "Product Engineering Partner",
-    headshot: "/images/kailash-headshot.jpg",
+    headshot: withBasePath("/images/kailash-headshot.jpg"),
     twitter: "",
     linkedin: "https://www.linkedin.com/in/kailash-gayari-720327156/",
     github: "https://github.com/Kailash-dev",
