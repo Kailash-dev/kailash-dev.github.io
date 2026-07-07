@@ -21,7 +21,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "We needed admin and customer portals built for how construction and infrastructure teams actually work — not a generic CRM. Kailash delivered both with clear communication and production-ready engineering.",
     author: "Rajni Kumar",
-    role: "Founder",
+    role: "Technical Lead",
     company: "Vendor Infra",
     projectSlug: "vendor-infra",
   },
