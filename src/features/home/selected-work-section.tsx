@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Badge } from "@/components/common/badge";
+import { CaseStudyBadge } from "@/components/common/case-study-badge";
 import { CaseStudyVisual } from "@/components/common/case-study-visual";
 import { Container } from "@/components/common/container";
 import { FadeIn } from "@/components/common/fade-in";
@@ -44,7 +44,7 @@ export function SelectedWorkSection() {
                     image={study.image}
                     className="mb-6"
                   />
-                  <Badge className="w-fit">{study.category}</Badge>
+                  <CaseStudyBadge study={study} />
                   <Heading as="h3" className="mt-4 text-xl">
                     <Link
                       href={`/work/${study.slug}`}

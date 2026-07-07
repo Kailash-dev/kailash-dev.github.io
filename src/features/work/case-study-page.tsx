@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Badge } from "@/components/common/badge";
+import { CaseStudyBadge } from "@/components/common/case-study-badge";
 import { CaseStudyVisual } from "@/components/common/case-study-visual";
 import { Container } from "@/components/common/container";
 import { FadeIn } from "@/components/common/fade-in";
@@ -36,7 +36,7 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="max-w-3xl">
-              <Badge>{study.category}</Badge>
+              <CaseStudyBadge study={study} />
               <Heading as="h1" className="mt-4 text-4xl md:text-5xl">
                 {study.title}
               </Heading>

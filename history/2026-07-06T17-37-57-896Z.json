@@ -1,0 +1,7 @@
+{
+  "type": "agent",
+  "task": "hello",
+  "output": "Agent finished without a summary.",
+  "steps": 52,
+  "timestamp": "2026-07-06T17:37:57.869Z"
+}

@@ -29,22 +29,22 @@ export const caseStudies: CaseStudy[] = [
       "Multi-role portals",
       "Payments & escrow",
     ],
+    engagement: "client",
     featured: true,
   },
   {
     slug: "vyaparpost",
     title: "VyaparPost",
-    category: "SaaS Product",
+    category: "Founder Product · SaaS",
     visual: "design",
     image: "/images/projects/vyaparpost.jpg",
-    client: "VyaparPost",
     liveUrl: "https://vyaparpost.in",
     summary:
-      "Festival marketing posts for Indian shop owners — ready in 5 minutes, sized for WhatsApp, with shop details auto-filled.",
+      "My own SaaS product — festival marketing posts for Indian shop owners, ready in 5 minutes, sized for WhatsApp, with shop details auto-filled.",
     problem:
       "Small shop owners need festival posts for WhatsApp marketing but cannot afford ₹200–500 per poster from local designers — and generic design apps are not built for Indian festivals or WhatsApp Status formats.",
     approach:
-      "Built a purpose-specific SaaS: festival calendar, template library, one-time shop setup, Hindi and English greetings, 600×600 WhatsApp-ready exports, and one-tap sharing.",
+      "Founded and built a purpose-specific SaaS: festival calendar, template library, one-time shop setup, Hindi and English greetings, 600×600 WhatsApp-ready exports, and one-tap sharing.",
     outcomes: [
       "Shop owners create festival posts in under 5 minutes",
       "40+ Indian festivals with built-in Hindi greetings",
@@ -52,13 +52,14 @@ export const caseStudies: CaseStudy[] = [
       "Archive and re-use posts across festivals and weekly offers",
     ],
     context:
-      "Product-market fit focused on dukaan owners, not generic designers or agencies.",
+      "Founder-built product — conceived, designed, and shipped end-to-end from idea to production.",
     capabilities: [
       "SaaS product",
       "Template engine",
       "Subscription billing",
       "WhatsApp integration",
     ],
+    engagement: "founder",
     featured: true,
   },
   {
@@ -89,6 +90,7 @@ export const caseStudies: CaseStudy[] = [
       "Industry workflows",
       "AI integration",
     ],
+    engagement: "client",
     featured: true,
   },
 ];

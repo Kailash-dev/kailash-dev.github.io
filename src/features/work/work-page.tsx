@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { Badge } from "@/components/common/badge";
+import { CaseStudyBadge } from "@/components/common/case-study-badge";
 import { CaseStudyVisual } from "@/components/common/case-study-visual";
 import { Container } from "@/components/common/container";
 import { FadeIn } from "@/components/common/fade-in";
@@ -31,7 +31,7 @@ export function WorkPage() {
                       image={study.image}
                     />
                     <div>
-                      <Badge>{study.category}</Badge>
+                      <CaseStudyBadge study={study} />
                       <Heading as="h2" className="mt-4 text-2xl md:text-3xl">
                       <Link
                         href={`/work/${study.slug}`}

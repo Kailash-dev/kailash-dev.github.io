@@ -26,6 +26,8 @@ export type CaseStudy = {
   image?: string;
   liveUrl?: string;
   client?: string;
+  /** client = built for a client; founder = own product/idea */
+  engagement?: "client" | "founder";
 };
 
 export type Testimonial = {
