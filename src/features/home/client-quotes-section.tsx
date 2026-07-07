@@ -25,7 +25,7 @@ export function ClientQuotesSection() {
 
         <ul className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((item, index) => (
-            <li key={`${item.author}-${item.company}`}>
+            <li key={`${item.author}-${item.company}-${index}`}>
               <FadeIn delay={index * 0.06}>
                 <figure className="flex h-full flex-col border-t border-border pt-6">
                   <blockquote className="text-pretty flex-1 text-base leading-relaxed">

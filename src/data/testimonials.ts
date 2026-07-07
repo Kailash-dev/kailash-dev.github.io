@@ -1,15 +1,28 @@
 import type { Testimonial } from "@/types";
 
-/**
- * Add real client quotes here. Each quote should be approved by the client.
- *
- * Example format:
- * {
- *   quote: "Kailash took full ownership of our platform build...",
- *   author: "Client Name",
- *   role: "Founder",
- *   company: "Company Name",
- *   projectSlug: "safework-global",
- * }
- */
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Kailash understood from the start that this wasn't a job board — it was compliance infrastructure. He built the platform with that mindset, and it shows in how the product works today.",
+    author: "Mukul Tater",
+    role: "Founder",
+    company: "SafeWork Global",
+    projectSlug: "safework-global",
+  },
+  {
+    quote:
+      "We needed someone who could own delivery without constant hand-holding. Kailash handled architecture, build, and deployment — so we could focus on employers, workers, and go-to-market.",
+    author: "Mukul Tater",
+    role: "Founder",
+    company: "SafeWork Global",
+    projectSlug: "safework-global",
+  },
+  {
+    quote:
+      "We needed admin and customer portals built for how construction and infrastructure teams actually work — not a generic CRM. Kailash delivered both with clear communication and production-ready engineering.",
+    author: "Rajni Kumar",
+    role: "Founder",
+    company: "Vendor Infra",
+    projectSlug: "vendor-infra",
+  },
+];
