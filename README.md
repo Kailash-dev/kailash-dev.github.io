@@ -1,27 +1,90 @@
-# MyPortfolio
+# Portfolio — Product Engineering Partner
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+Premium client-acquisition website for an international software engineering consultancy.
 
-## Development server
+## Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Next.js 15** — App Router, Server Components
+- **TypeScript** — Strict mode
+- **Tailwind CSS v4** — CSS-first design tokens
+- **shadcn/ui** — Component primitives
+- **Framer Motion** — Subtle animations
+- **Lucide** — Icons
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+# Install dependencies
+npm install
 
-## Build
+# Start development server
+npm run dev
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Type check
+npm run typecheck
 
-## Running unit tests
+# Lint
+npm run lint
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Format
+npm run format
+```
 
-## Running end-to-end tests
+Open [http://localhost:3000](http://localhost:3000).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Project Documentation
 
-## Further help
+| Document                                              | Description                           |
+| ----------------------------------------------------- | ------------------------------------- |
+| [Project Vision](docs/00-project-vision.md)           | Purpose, positioning, success metrics |
+| [Development Roadmap](docs/01-development-roadmap.md) | Phased implementation plan            |
+| [Architecture](docs/02-architecture.md)               | Stack, folder structure, patterns     |
+| [Design System](docs/03-design-system.md)             | Tokens, components, rules             |
+| [Decisions](docs/04-decisions.md)                     | Architecture decision records         |
+| [Changelog](docs/05-changelog.md)                     | Version history                       |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and set values:
+
+```bash
+cp .env.example .env.local
+```
+
+## Scripts
+
+| Command                | Description                    |
+| ---------------------- | ------------------------------ |
+| `npm run dev`          | Development server (Turbopack) |
+| `npm run build`        | Production build               |
+| `npm run start`        | Production server              |
+| `npm run lint`         | ESLint check                   |
+| `npm run lint:fix`     | ESLint auto-fix                |
+| `npm run format`       | Prettier format                |
+| `npm run format:check` | Prettier check                 |
+| `npm run typecheck`    | TypeScript check               |
+
+## Architecture
+
+```
+src/
+├── app/          # Routes (thin pages)
+├── components/   # ui/, layout/, common/
+├── features/     # Domain modules
+├── data/         # Static content
+├── config/       # Site configuration
+├── constants/    # Navigation, animation, layout
+├── hooks/        # Shared hooks
+├── lib/          # Utilities, SEO, animations
+├── providers/    # Theme provider
+├── styles/       # Global CSS and tokens
+└── types/        # TypeScript interfaces
+```
+
+## Deployment
+
+Optimized for [Vercel](https://vercel.com). Set `NEXT_PUBLIC_SITE_URL` in production environment.
+
+## License
+
+Private — All rights reserved.
