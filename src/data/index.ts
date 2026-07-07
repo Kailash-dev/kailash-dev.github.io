@@ -7,3 +7,4 @@ export {
 export { faqItems } from "./faq";
 export { engagementPrinciples, processSteps } from "./process";
 export { getServiceBySlug, services } from "./services";
+export { testimonials } from "./testimonials";

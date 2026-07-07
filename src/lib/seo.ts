@@ -3,8 +3,16 @@ import type { CaseStudy } from "@/types";
 
 type JsonLd = Record<string, unknown>;
 
+function getSameAsLinks(): string[] {
+  const { author } = siteConfig;
+  return [author.linkedin, author.github, author.twitter].filter(
+    (url) => url.length > 0,
+  );
+}
+
 export function createPersonSchema(): JsonLd {
   const { author, url, description } = siteConfig;
+  const sameAs = getSameAsLinks();
 
   return {
     "@context": "https://schema.org",
@@ -15,6 +23,7 @@ export function createPersonSchema(): JsonLd {
     description,
     jobTitle: siteConfig.title,
     knowsAbout: siteConfig.keywords,
+    ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
 
@@ -59,7 +68,7 @@ export function createCaseStudySchema(study: CaseStudy): JsonLd {
     "@type": "CreativeWork",
     name: study.title,
     description: study.summary,
-    url: `${url}/work/${study.slug}`,
+    url: study.liveUrl ?? `${url}/work/${study.slug}`,
     about: study.category,
     abstract: study.problem,
     keywords: study.outcomes.join(", "),

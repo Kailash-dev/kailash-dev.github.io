@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const siteConfig = {
   name: "Kailash",
+  fullName: "Kailash Gayari",
   title: "Product Engineering Partner",
   description:
     "I help founders and growing teams design, build, and ship production-ready web and mobile software — from architecture through deployment.",
@@ -9,13 +10,14 @@ export const siteConfig = {
   ogImage: "/opengraph-image",
   locale: "en_US",
   author: {
-    name: "Kailash",
+    name: "Kailash Gayari",
     email: "hello@kailash.dev",
-    initials: "K",
+    initials: "KG",
     role: "Product Engineering Partner",
+    headshot: "/images/kailash-headshot.jpg",
     twitter: "",
-    linkedin: "",
-    github: "",
+    linkedin: "https://www.linkedin.com/in/kailash-gayari-720327156/",
+    github: "https://github.com/Kailash-dev",
   },
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
   keywords: [
@@ -29,8 +31,8 @@ export const siteConfig = {
   ],
   trustSignals: [
     {
-      label: "Products delivered",
-      value: "Web, mobile & IoT",
+      label: "Live products",
+      value: "SaaS, B2B & compliance platforms",
     },
     {
       label: "Engagement scope",
@@ -38,7 +40,7 @@ export const siteConfig = {
     },
     {
       label: "Client regions",
-      value: "US, UK, EU & AU",
+      value: "India, US, UK, EU & AU",
     },
   ],
 } as const;
@@ -94,4 +96,12 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
     },
     ...overrides,
   };
+}
+
+export function getAuthorSocialLinks() {
+  const { author } = siteConfig;
+  return [
+    { label: "LinkedIn", href: author.linkedin },
+    { label: "GitHub", href: author.github },
+  ].filter((link) => link.href.length > 0);
 }

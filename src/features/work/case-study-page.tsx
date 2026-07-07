@@ -43,6 +43,16 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               <Text variant="lead" className="text-muted-foreground mt-6">
                 {study.summary}
               </Text>
+              {study.liveUrl && (
+                <a
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground mt-4 inline-flex text-sm font-medium underline-offset-4 hover:underline"
+                >
+                  Visit live site ↗
+                </a>
+              )}
             </div>
             <CaseStudyVisual visual={study.visual} title={study.title} />
           </div>

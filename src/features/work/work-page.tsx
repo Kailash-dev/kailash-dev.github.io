@@ -29,12 +29,23 @@ export function WorkPage() {
                     <div>
                       <Badge>{study.category}</Badge>
                       <Heading as="h2" className="mt-4 text-2xl md:text-3xl">
-                        <Link
-                          href={`/work/${study.slug}`}
-                          className="transition-colors hover:text-foreground/80"
+                      <Link
+                        href={`/work/${study.slug}`}
+                        className="transition-colors hover:text-foreground/80"
+                      >
+                        {study.title}
+                      </Link>
+                      {study.liveUrl && (
+                        <a
+                          href={study.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground ml-2 text-sm font-normal underline-offset-4 hover:text-foreground hover:underline"
+                          aria-label={`Visit ${study.title} live site`}
                         >
-                          {study.title}
-                        </Link>
+                          ↗
+                        </a>
+                      )}
                       </Heading>
                       <Text variant="lead" className="text-muted-foreground mt-3">
                         {study.summary}

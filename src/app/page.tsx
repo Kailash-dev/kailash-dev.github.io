@@ -1,4 +1,5 @@
 import {
+  ClientQuotesSection,
   HeroSection,
   HomeCtaSection,
   ProcessSnapshotSection,
@@ -15,6 +16,7 @@ export default function HomePage() {
       <TrustBarSection />
       <WhoIHelpSection />
       <SelectedWorkSection />
+      <ClientQuotesSection />
       <ServicesPreviewSection />
       <ProcessSnapshotSection />
       <HomeCtaSection />

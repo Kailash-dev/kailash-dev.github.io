@@ -23,6 +23,16 @@ export type CaseStudy = {
   capabilities: string[];
   featured: boolean;
   visual: CaseStudyVisual;
+  liveUrl?: string;
+  client?: string;
+};
+
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  company: string;
+  projectSlug?: string;
 };
 
 export type Service = {
@@ -42,6 +52,7 @@ export type SiteAuthor = {
   email: string;
   initials?: string;
   role?: string;
+  headshot?: string;
   twitter?: string;
   linkedin?: string;
   github?: string;
