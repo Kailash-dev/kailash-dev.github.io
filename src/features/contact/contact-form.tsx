@@ -22,6 +22,59 @@ const initialState: FormState = {
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
+function buildMailto(payload: ContactFormPayload): string {
+  const subject = encodeURIComponent(
+    `Discovery call request from ${payload.name}`,
+  );
+  const body = encodeURIComponent(
+    [
+      `Name: ${payload.name}`,
+      `Email: ${payload.email}`,
+      `Company: ${payload.company || "Not provided"}`,
+      `Budget: ${payload.budget || "Not specified"}`,
+      `Timeline: ${payload.timeline || "Not specified"}`,
+      "",
+      "Message:",
+      payload.message,
+    ].join("\n"),
+  );
+
+  return `mailto:${siteConfig.author.email}?subject=${subject}&body=${body}`;
+}
+
+async function submitContactForm(
+  payload: ContactFormPayload,
+): Promise<{ method: "formspree" | "mailto"; mailto?: string }> {
+  const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+
+  if (formspreeId) {
+    const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: payload.name,
+        email: payload.email,
+        company: payload.company,
+        budget: payload.budget,
+        timeline: payload.timeline,
+        message: payload.message,
+        _subject: `Discovery call request from ${payload.name}`,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Unable to send message. Please try email directly.");
+    }
+
+    return { method: "formspree" };
+  }
+
+  return { method: "mailto", mailto: buildMailto(payload) };
+}
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -42,25 +95,10 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const result = await submitContactForm(form);
 
-      const data = (await response.json()) as {
-        ok?: boolean;
-        error?: string;
-        method?: string;
-        mailto?: string;
-      };
-
-      if (!response.ok || !data.ok) {
-        throw new Error(data.error ?? "Unable to send message.");
-      }
-
-      if (data.method === "mailto" && data.mailto) {
-        window.location.href = data.mailto;
+      if (result.method === "mailto" && result.mailto) {
+        window.location.href = result.mailto;
       }
 
       setSubmitState("success");
@@ -79,17 +117,24 @@ export function ContactForm() {
         className="rounded-xl border border-border bg-card p-8"
         role="status"
       >
-        <p className="text-lg font-medium">Message prepared successfully</p>
+        <p className="text-lg font-medium">
+          {process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
+            ? "Message sent successfully"
+            : "Message prepared successfully"}
+        </p>
         <p className="text-muted-foreground mt-2 text-sm">
-          Your email client should open shortly. If it didn&apos;t, reach out
-          directly at{" "}
-          <a
-            href={`mailto:${siteConfig.author.email}`}
-            className="text-foreground underline underline-offset-4"
-          >
-            {siteConfig.author.email}
-          </a>
-          .
+          {process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID
+            ? "Thanks for reaching out. I'll respond within one business day."
+            : "Your email client should open shortly. If it didn't, reach out directly at "}
+          {!process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID && (
+            <a
+              href={`mailto:${siteConfig.author.email}`}
+              className="text-foreground underline underline-offset-4"
+            >
+              {siteConfig.author.email}
+            </a>
+          )}
+          {!process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID && "."}
         </p>
         <Button
           variant="outline"
