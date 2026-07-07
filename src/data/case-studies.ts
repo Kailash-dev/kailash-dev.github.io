@@ -5,102 +5,131 @@ export const caseStudies: CaseStudy[] = [
     slug: "offline-media-streaming",
     title: "Offline Media Streaming System",
     category: "IoT & Entertainment",
+    visual: "iot",
     summary:
-      "Edge-computing media delivery for public transport without internet connectivity.",
-    highlights: [
-      "Offline streaming for transport systems",
-      "Local Wi-Fi powered by Raspberry Pi",
-      "SD card-based media delivery",
+      "Passenger entertainment for public transport — without relying on mobile internet.",
+    problem:
+      "A transport operator needed to offer media to passengers in areas with no reliable connectivity. Streaming from the cloud was not an option.",
+    approach:
+      "Designed an edge delivery system: local Wi-Fi on each vehicle, content pre-loaded to devices, and a lightweight server handling playback and updates when vehicles return to depot.",
+    outcomes: [
+      "Passengers access entertainment offline via onboard Wi-Fi",
+      "Low-cost hardware footprint suitable for fleet-wide rollout",
+      "Content updates managed without disrupting daily operations",
     ],
-    description:
-      "An edge-computing media streaming solution for buses, trains, and other public transport. Passengers connect to a local Wi-Fi network to access pre-loaded multimedia content without internet access. Built with Raspberry Pi for low-cost deployment and Node.js for content delivery.",
-    capabilities: ["Raspberry Pi", "Node.js", "Express", "System Design"],
+    context:
+      "Built for reliability in constrained environments — prioritising uptime and simple field maintenance over complexity.",
+    capabilities: ["Edge computing", "IoT", "System design", "Node.js"],
     featured: true,
   },
   {
     slug: "device-media-management-portal",
     title: "Device & Media Management Portal",
-    category: "Web Admin Panel",
+    category: "Operations Platform",
+    visual: "portal",
     summary:
-      "Centralized portal for managing IoT streaming devices, content, and analytics.",
-    highlights: [
-      "Manage devices and media content",
-      "OTA updates and analytics dashboard",
-      "Role-based access control",
+      "One control centre for a distributed fleet of streaming devices and their content libraries.",
+    problem:
+      "As the device fleet grew, the team needed a single place to upload media, monitor device health, push updates, and understand usage — without logging into individual units.",
+    approach:
+      "Built a centralized admin portal with role-based access, device dashboards, media management, and over-the-air update workflows tied to real operational needs.",
+    outcomes: [
+      "Operations team manages entire fleet from one dashboard",
+      "Role-based access for admins, operators, and viewers",
+      "OTA updates and usage analytics reduce manual intervention",
     ],
-    description:
-      "Centralized web portal to manage IoT streaming devices and their content. Allows media uploads, device monitoring, over-the-air updates, and real-time usage analytics with role-based access control.",
-    capabilities: ["Node.js", "MongoDB", "RBAC", "Admin Dashboards"],
+    context:
+      "Focused on operational clarity for non-technical staff — the interface had to be dependable, not impressive.",
+    capabilities: ["Admin systems", "RBAC", "Real-time monitoring", "Node.js"],
     featured: true,
   },
   {
     slug: "web-design-tool",
     title: "Web-based Design Tool",
-    category: "Web Application",
+    category: "SaaS Product",
+    visual: "design",
     summary:
-      "Browser-based design platform with drag-and-drop canvas and asset management.",
-    highlights: [
-      "Drag-and-drop design canvas",
-      "Custom fonts, layers, and templates",
-      "Export to PNG and JPEG",
+      "A browser-based design platform that lets non-designers create and export marketing assets.",
+    problem:
+      "A business needed an in-house design workflow without licensing expensive desktop tools or hiring a full design team for routine asset production.",
+    approach:
+      "Delivered a canvas-based editor with templates, layers, custom fonts, and export — scoped to the workflows the team actually used daily.",
+    outcomes: [
+      "Teams produce branded assets without leaving the browser",
+      "Template library accelerates repetitive design tasks",
+      "PNG and JPEG export integrated into existing workflows",
     ],
-    description:
-      "A Canva-like browser-based design platform using Fabric.js for an interactive canvas. Supports image and text editing, custom fonts, layers, templates, and export features with S3 asset storage.",
-    capabilities: ["Fabric.js", "Node.js", "AWS S3", "Express"],
+    context:
+      "Product decisions favoured speed-to-asset over feature parity with enterprise design tools.",
+    capabilities: [
+      "Canvas editing",
+      "Asset management",
+      "Cloud storage",
+      "Web application",
+    ],
     featured: true,
   },
   {
     slug: "community-mobile-app",
     title: "Community Mobile App",
-    category: "Mobile Application",
+    category: "Mobile Product",
+    visual: "mobile",
     summary:
-      "Cross-platform community app with matrimony, jobs, and business directory features.",
-    highlights: [
-      "Community features: matrimony, jobs, businesses",
-      "Real-time sync with Firebase",
-      "Cross-platform React Native app",
+      "A single app serving matrimony, jobs, and business listings for a large community.",
+    problem:
+      "A community organisation needed one mobile presence for multiple services — each with different data models and update patterns — without fragmenting the user experience.",
+    approach:
+      "Architected a modular React Native app with shared navigation and real-time sync, allowing each service to evolve independently while feeling like one product.",
+    outcomes: [
+      "One app replaces three separate service touchpoints",
+      "Real-time updates across listings and user-generated content",
+      "Modular architecture supports adding services without rewrites",
     ],
-    description:
-      "A multi-feature mobile app serving a large community with services like matrimony, job listings, and business directories. Built with React Native and Firebase for real-time updates with modular architecture.",
-    capabilities: ["React Native", "Firebase", "Node.js", "MongoDB"],
+    context:
+      "Cross-platform delivery kept maintenance costs manageable for a lean team.",
+    capabilities: ["Mobile product", "Real-time sync", "Modular architecture"],
     featured: false,
   },
   {
     slug: "ecommerce-platform",
     title: "E-Commerce Platform",
-    category: "Web Application",
+    category: "Commerce",
+    visual: "commerce",
     summary:
-      "Multi-vendor e-commerce with cart, checkout, coupons, and order management.",
-    highlights: [
-      "Cart, checkout, and coupon features",
-      "Multi-vendor support",
-      "Mobile-first design",
+      "Multi-vendor marketplace with cart, checkout, and order operations built for real transactions.",
+    problem:
+      "A business wanted to launch a marketplace where multiple vendors sell through one storefront — with secure checkout and manageable order operations from day one.",
+    approach:
+      "Built vendor onboarding, product catalog, cart and checkout flows, and an admin layer for order management — mobile-first, with payments integrated into the purchase path.",
+    outcomes: [
+      "Multiple vendors operate through a unified storefront",
+      "End-to-end checkout with coupon and order management",
+      "Mobile-first experience for buyers in growth markets",
     ],
-    description:
-      "An e-commerce application supporting multiple vendors, order management, product search, and secure checkout with MongoDB for product and order data.",
-    capabilities: ["Node.js", "Express", "MongoDB", "Payments"],
+    context:
+      "Commerce flows were tested against real payment scenarios before launch, not mocked.",
+    capabilities: ["Marketplace", "Payments", "Order management", "Mobile-first"],
     featured: false,
   },
   {
     slug: "whatsapp-price-bot",
     title: "What's Cheaper Near Me",
-    category: "Chatbot Prototype",
+    category: "AI Prototype",
+    visual: "ai",
     summary:
-      "AI-assisted WhatsApp bot MVP to find cheaper local product alternatives.",
-    highlights: [
-      "AI-assisted WhatsApp bot",
-      "Find cheaper local alternatives",
-      "Shipped in under 6 hours",
+      "A WhatsApp bot MVP that helps shoppers find cheaper local alternatives — shipped in hours, not weeks.",
+    problem:
+      "Validate whether users would engage with price-comparison via WhatsApp before investing in a full product — with almost no time budget.",
+    approach:
+      "Scoped to a single conversational flow, integrated WhatsApp Cloud API and AI-assisted parsing, containerised for repeatable deployment, and shipped within one working session.",
+    outcomes: [
+      "Working prototype deployed and testable same day",
+      "Conversational flow validated with real users on WhatsApp",
+      "CI/CD pipeline in place for rapid follow-up iterations",
     ],
-    description:
-      "An experimental WhatsApp bot MVP built in under 6 hours to help users find cheaper local alternatives for products. Focused on rapid prototyping, CI/CD, and functional delivery.",
-    capabilities: [
-      "Node.js",
-      "Express",
-      "WhatsApp Cloud API",
-      "OpenAI API",
-      "Docker",
-    ],
+    context:
+      "A deliberate speed exercise — proving feasibility before committing to full product build.",
+    capabilities: ["Rapid prototyping", "Conversational AI", "WhatsApp API", "CI/CD"],
     featured: false,
   },
 ];

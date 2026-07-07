@@ -9,6 +9,7 @@ export const navigation = [
 export const cta = {
   label: "Book a Call",
   href: "/contact",
+  anchor: "/contact#book",
 } as const;
 
 export const animation = {

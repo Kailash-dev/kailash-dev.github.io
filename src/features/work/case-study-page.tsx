@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Badge } from "@/components/common/badge";
+import { CaseStudyVisual } from "@/components/common/case-study-visual";
 import { Container } from "@/components/common/container";
+import { FadeIn } from "@/components/common/fade-in";
 import { Section } from "@/components/common/section";
 import { Heading, Text } from "@/components/common/typography";
 import { Button } from "@/components/ui/button";
@@ -32,14 +34,17 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
 
       <div className="border-b border-border py-16 md:py-20">
         <Container>
-          <div className="max-w-3xl">
-            <Badge>{study.category}</Badge>
-            <Heading as="h1" className="mt-4 text-4xl md:text-5xl">
-              {study.title}
-            </Heading>
-            <Text variant="lead" className="text-muted-foreground mt-6">
-              {study.summary}
-            </Text>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="max-w-3xl">
+              <Badge>{study.category}</Badge>
+              <Heading as="h1" className="mt-4 text-4xl md:text-5xl">
+                {study.title}
+              </Heading>
+              <Text variant="lead" className="text-muted-foreground mt-6">
+                {study.summary}
+              </Text>
+            </div>
+            <CaseStudyVisual visual={study.visual} title={study.title} />
           </div>
         </Container>
       </div>
@@ -47,49 +52,64 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
       <Section>
         <Container>
           <div className="max-w-3xl">
-            <Heading as="h2" className="text-2xl">
-              Overview
-            </Heading>
-            <Text className="text-muted-foreground mt-4">{study.description}</Text>
-
-            <Heading as="h2" className="mt-12 text-2xl">
-              Key outcomes
-            </Heading>
-            <ul className="mt-4 space-y-3">
-              {study.highlights.map((highlight) => (
-                <li
-                  key={highlight}
-                  className="text-muted-foreground flex gap-3 text-base"
-                >
-                  <span className="text-foreground mt-1.5 size-1.5 shrink-0 rounded-full bg-foreground" />
-                  {highlight}
-                </li>
-              ))}
-            </ul>
-
-            <Heading as="h2" className="mt-12 text-2xl">
-              Capabilities applied
-            </Heading>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {study.capabilities.map((capability) => (
-                <li key={capability}>
-                  <Badge>{capability}</Badge>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-16 rounded-2xl border border-border bg-card p-8 text-center md:p-12">
+            <FadeIn>
               <Heading as="h2" className="text-2xl">
-                Building something similar?
+                The challenge
               </Heading>
-              <Text variant="muted" className="mx-auto mt-3 max-w-md">
-                Let&apos;s discuss your product goals and whether I can help you
-                ship with the same clarity and ownership.
+              <Text className="text-muted-foreground mt-4">{study.problem}</Text>
+            </FadeIn>
+
+            <FadeIn>
+              <Heading as="h2" className="mt-12 text-2xl">
+                The approach
+              </Heading>
+              <Text className="text-muted-foreground mt-4">
+                {study.approach}
               </Text>
-              <Button asChild size="lg" className="mt-6">
-                <Link href={cta.href}>{cta.label}</Link>
-              </Button>
-            </div>
+            </FadeIn>
+
+            <FadeIn>
+              <Heading as="h2" className="mt-12 text-2xl">
+                Outcomes
+              </Heading>
+              <ul className="mt-4 space-y-3">
+                {study.outcomes.map((outcome) => (
+                  <li
+                    key={outcome}
+                    className="text-muted-foreground flex gap-3 text-base"
+                  >
+                    <span className="text-foreground mt-1.5 size-1.5 shrink-0 rounded-full bg-foreground" />
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="mt-12 rounded-xl border border-border bg-muted/30 p-6">
+                <Text variant="small" className="text-muted-foreground">
+                  {study.context}
+                </Text>
+                <p className="text-muted-foreground mt-4 text-xs">
+                  Capabilities: {study.capabilities.join(" · ")}
+                </p>
+              </div>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="mt-16 rounded-2xl border border-border bg-card p-8 text-center md:p-12">
+                <Heading as="h2" className="text-2xl">
+                  Building something similar?
+                </Heading>
+                <Text variant="muted" className="mx-auto mt-3 max-w-md">
+                  Let&apos;s discuss your product goals and whether I can help you
+                  ship with the same clarity and ownership.
+                </Text>
+                <Button asChild size="lg" className="mt-6">
+                  <Link href={`${cta.href}#book`}>{cta.label}</Link>
+                </Button>
+              </div>
+            </FadeIn>
           </div>
         </Container>
       </Section>

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { cta, layout, navigation } from "@/constants";
+import { DesktopNav, HeaderActions } from "@/components/layout/site-header-nav";
+import { layout } from "@/constants";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
@@ -19,22 +19,10 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <DesktopNav />
 
-        <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="hidden shrink-0 md:inline-flex">
-            <Link href={cta.href}>{cta.label}</Link>
-          </Button>
+        <div className="flex items-center gap-1">
+          <HeaderActions />
           <MobileNav />
         </div>
       </div>

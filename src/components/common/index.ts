@@ -5,3 +5,7 @@ export { Badge } from "./badge";
 export { Separator } from "./separator";
 export { SkipLink } from "./skip-link";
 export { FadeIn } from "./fade-in";
+export { AuthorPortrait } from "./author-portrait";
+export { CaseStudyVisual } from "./case-study-visual";
+export { CalendlyEmbed } from "./calendly-embed";
+export { ThemeToggle } from "./theme-toggle";

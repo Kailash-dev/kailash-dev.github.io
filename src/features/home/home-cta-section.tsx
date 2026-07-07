@@ -16,7 +16,7 @@ export function HomeCtaSection() {
             No pressure — just a clear conversation.
           </p>
           <Button asChild size="lg" className="mt-8">
-            <Link href={cta.href}>{cta.label}</Link>
+            <Link href={`${cta.href}#book`}>{cta.label}</Link>
           </Button>
         </div>
       </div>

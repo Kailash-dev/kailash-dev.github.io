@@ -61,6 +61,7 @@ export function createCaseStudySchema(study: CaseStudy): JsonLd {
     description: study.summary,
     url: `${url}/work/${study.slug}`,
     about: study.category,
-    keywords: study.capabilities.join(", "),
+    abstract: study.problem,
+    keywords: study.outcomes.join(", "),
   };
 }

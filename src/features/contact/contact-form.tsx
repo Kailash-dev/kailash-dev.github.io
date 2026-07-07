@@ -7,15 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/config/site";
+import type { ContactFormPayload } from "@/types";
 
-type FormState = {
-  name: string;
-  email: string;
-  company: string;
-  budget: string;
-  timeline: string;
-  message: string;
-};
+type FormState = ContactFormPayload;
 
 const initialState: FormState = {
   name: "",
@@ -26,9 +20,12 @@ const initialState: FormState = {
   message: "",
 };
 
+type SubmitState = "idle" | "loading" | "success" | "error";
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(
     e: React.ChangeEvent<
@@ -39,50 +36,65 @@ export function ContactForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setSubmitState("loading");
+    setErrorMessage("");
 
-    const subject = encodeURIComponent(
-      `Discovery call request from ${form.name}`,
-    );
-    const body = encodeURIComponent(
-      [
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Company: ${form.company || "Not provided"}`,
-        `Budget: ${form.budget || "Not specified"}`,
-        `Timeline: ${form.timeline || "Not specified"}`,
-        "",
-        "Message:",
-        form.message,
-      ].join("\n"),
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    window.location.href = `mailto:${siteConfig.author.email}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+      const data = (await response.json()) as {
+        ok?: boolean;
+        error?: string;
+        method?: string;
+        mailto?: string;
+      };
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error ?? "Unable to send message.");
+      }
+
+      if (data.method === "mailto" && data.mailto) {
+        window.location.href = data.mailto;
+      }
+
+      setSubmitState("success");
+      setForm(initialState);
+    } catch (error) {
+      setSubmitState("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Unable to send message.",
+      );
+    }
   }
 
-  if (submitted) {
+  if (submitState === "success") {
     return (
       <div
-        className="rounded-xl border border-border bg-card p-8 text-center"
+        className="rounded-xl border border-border bg-card p-8"
         role="status"
       >
-        <p className="text-lg font-medium">Opening your email client…</p>
+        <p className="text-lg font-medium">Message prepared successfully</p>
         <p className="text-muted-foreground mt-2 text-sm">
-          If it didn&apos;t open, email{" "}
+          Your email client should open shortly. If it didn&apos;t, reach out
+          directly at{" "}
           <a
             href={`mailto:${siteConfig.author.email}`}
             className="text-foreground underline underline-offset-4"
           >
             {siteConfig.author.email}
-          </a>{" "}
-          directly.
+          </a>
+          .
         </p>
         <Button
           variant="outline"
           className="mt-6"
-          onClick={() => setSubmitted(false)}
+          onClick={() => setSubmitState("idle")}
         >
           Send another message
         </Button>
@@ -103,6 +115,7 @@ export function ContactForm() {
             autoComplete="name"
             value={form.name}
             onChange={handleChange}
+            disabled={submitState === "loading"}
           />
         </div>
         <div className="space-y-2">
@@ -115,6 +128,7 @@ export function ContactForm() {
             autoComplete="email"
             value={form.email}
             onChange={handleChange}
+            disabled={submitState === "loading"}
           />
         </div>
       </div>
@@ -128,6 +142,7 @@ export function ContactForm() {
           autoComplete="organization"
           value={form.company}
           onChange={handleChange}
+          disabled={submitState === "loading"}
         />
       </div>
 
@@ -139,7 +154,8 @@ export function ContactForm() {
             name="budget"
             value={form.budget}
             onChange={handleChange}
-            className="border-input bg-background ring-offset-background focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            disabled={submitState === "loading"}
+            className="border-input bg-background ring-offset-background focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:opacity-50"
           >
             <option value="">Select a range</option>
             <option value="Under $10k">Under $10k</option>
@@ -156,7 +172,8 @@ export function ContactForm() {
             name="timeline"
             value={form.timeline}
             onChange={handleChange}
-            className="border-input bg-background ring-offset-background focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            disabled={submitState === "loading"}
+            className="border-input bg-background ring-offset-background focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:opacity-50"
           >
             <option value="">Select timeline</option>
             <option value="ASAP">ASAP</option>
@@ -177,11 +194,18 @@ export function ContactForm() {
           placeholder="What are you building? What challenges are you facing?"
           value={form.message}
           onChange={handleChange}
+          disabled={submitState === "loading"}
         />
       </div>
 
-      <Button type="submit" size="lg">
-        Send message
+      {submitState === "error" && (
+        <p className="text-destructive text-sm" role="alert">
+          {errorMessage}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" disabled={submitState === "loading"}>
+        {submitState === "loading" ? "Sending…" : "Send message"}
       </Button>
     </form>
   );

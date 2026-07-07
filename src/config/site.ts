@@ -6,23 +6,40 @@ export const siteConfig = {
   description:
     "I help founders and growing teams design, build, and ship production-ready web and mobile software — from architecture through deployment.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash.dev",
-  ogImage: "/og-image.png",
+  ogImage: "/opengraph-image",
   locale: "en_US",
   author: {
     name: "Kailash",
     email: "hello@kailash.dev",
+    initials: "K",
+    role: "Product Engineering Partner",
     twitter: "",
     linkedin: "",
     github: "",
   },
+  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
   keywords: [
-    "software engineering consultant",
     "product engineering partner",
-    "full stack developer",
+    "software engineering consultant",
+    "independent software consultant",
+    "technical partner for startups",
     "SaaS MVP development",
-    "React developer",
-    "Node.js developer",
     "international software consultant",
+    "full stack product development",
+  ],
+  trustSignals: [
+    {
+      label: "Products delivered",
+      value: "Web, mobile & IoT",
+    },
+    {
+      label: "Engagement scope",
+      value: "Idea to production",
+    },
+    {
+      label: "Client regions",
+      value: "US, UK, EU & AU",
+    },
   ],
 } as const;
 
@@ -30,10 +47,12 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
   const { name, title, description, url, ogImage, keywords, author } =
     siteConfig;
 
+  const defaultTitle = `${name} — ${title}`;
+
   return {
     metadataBase: new URL(url),
     title: {
-      default: `${name} — ${title}`,
+      default: defaultTitle,
       template: `%s | ${name}`,
     },
     description,
@@ -44,7 +63,7 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
       type: "website",
       locale: siteConfig.locale,
       url,
-      title: `${name} — ${title}`,
+      title: defaultTitle,
       description,
       siteName: name,
       images: [
@@ -52,13 +71,13 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${name} — ${title}`,
+          alt: defaultTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} — ${title}`,
+      title: defaultTitle,
       description,
       images: [ogImage],
     },
@@ -72,9 +91,6 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-    },
-    alternates: {
-      canonical: url,
     },
     ...overrides,
   };

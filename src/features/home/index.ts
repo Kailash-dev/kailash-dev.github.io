@@ -1,4 +1,5 @@
 export { HeroSection } from "./hero-section";
+export { TrustBarSection } from "./trust-bar-section";
 export { WhoIHelpSection } from "./who-i-help-section";
 export { ServicesPreviewSection } from "./services-preview-section";
 export { SelectedWorkSection } from "./selected-work-section";
