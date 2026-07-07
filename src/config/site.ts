@@ -8,12 +8,12 @@ export const siteConfig = {
   title: "Product Engineering Partner",
   description:
     "I help founders and growing teams design, build, and ship production-ready web and mobile software — from architecture through deployment.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash-dev.github.io",
   ogImage: withBasePath("/opengraph-image"),
   locale: "en_US",
   author: {
     name: "Kailash Gayari",
-    email: "hello@kailash.dev",
+    email: "kailash514910@gmail.com",
     initials: "KG",
     role: "Product Engineering Partner",
     headshot: withBasePath("/images/kailash-headshot.jpg"),

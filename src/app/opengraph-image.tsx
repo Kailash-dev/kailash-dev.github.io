@@ -75,7 +75,7 @@ export default function OpenGraphImage() {
         </div>
 
         <div style={{ fontSize: "20px", color: "#a3a3a3" }}>
-          kailash.dev
+          {new URL(siteConfig.url).host}
         </div>
       </div>
     ),

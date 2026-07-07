@@ -33,8 +33,7 @@ jobs:
       - name: Build for GitHub Pages
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_BASE_PATH: /portfolio
-          NEXT_PUBLIC_SITE_URL: https://kailash-dev.github.io/portfolio
+          NEXT_PUBLIC_SITE_URL: https://kailash-dev.github.io
         run: npm run build
 
       - name: Upload artifact
