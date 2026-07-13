@@ -6,11 +6,13 @@ export const siteConfig = {
   name: "Kailash",
   fullName: "Kailash Gayari",
   title: "Product Engineering Partner",
+  tagline: "Building production web, mobile & IoT products since 2019.",
   description:
     "I help founders and growing teams design, build, and ship production-ready web and mobile software — from architecture through deployment.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash-dev.github.io",
   ogImage: withBasePath("/opengraph-image"),
   locale: "en_US",
+  location: "Vapi, Gujarat, India",
   author: {
     name: "Kailash Gayari",
     email: "kailash514910@gmail.com",
@@ -22,6 +24,8 @@ export const siteConfig = {
     github: "https://github.com/Kailash-dev",
   },
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
+  /** Set when a public resume PDF is available under /public */
+  resumeUrl: "",
   keywords: [
     "product engineering partner",
     "software engineering consultant",
@@ -30,6 +34,7 @@ export const siteConfig = {
     "SaaS MVP development",
     "international software consultant",
     "full stack product development",
+    "IoT product engineering",
   ],
   trustSignals: [
     {
@@ -63,6 +68,9 @@ export function createMetadata(overrides?: Partial<Metadata>): Metadata {
     keywords: [...keywords],
     authors: [{ name: author.name, url }],
     creator: author.name,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       type: "website",
       locale: siteConfig.locale,

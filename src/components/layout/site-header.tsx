@@ -9,11 +9,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div
-        className={`mx-auto flex h-16 items-center justify-between ${layout.container.default} ${layout.section.paddingX}`}
+        className={`mx-auto flex h-16 items-center justify-between gap-4 ${layout.container.default} ${layout.section.paddingX}`}
       >
-        <Link href="/" className="text-sm font-semibold tracking-tight">
+        <Link
+          href="/"
+          className="shrink-0 text-sm font-semibold tracking-tight"
+        >
           {siteConfig.name}
-          <span className="text-muted-foreground font-normal">
+          <span className="text-muted-foreground hidden font-normal lg:inline">
             {" "}
             — {siteConfig.title}
           </span>

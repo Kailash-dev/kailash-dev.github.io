@@ -18,16 +18,48 @@ export type CaseStudy = {
   summary: string;
   problem: string;
   approach: string;
+  solution: string;
   outcomes: string[];
   context: string;
   capabilities: string[];
+  tech: string[];
+  architecture: string;
+  challenges: string[];
+  contributions: string[];
+  lessons: string[];
   featured: boolean;
   visual: CaseStudyVisual;
   image?: string;
   liveUrl?: string;
+  githubUrl?: string;
   client?: string;
   /** client = built for a client; founder = own product/idea */
-  engagement?: "client" | "founder";
+  engagement?: "client" | "founder" | "employment";
+  year?: string;
+};
+
+export type ExperienceRole = {
+  id: string;
+  company: string;
+  role: string;
+  location: string;
+  start: string;
+  end: string;
+  summary: string;
+  highlights: string[];
+  projects: string[];
+};
+
+export type CapabilityDomain = {
+  title: string;
+  description: string;
+  items: string[];
+};
+
+export type ProofSignal = {
+  value: string;
+  label: string;
+  detail: string;
 };
 
 export type Testimonial = {
@@ -68,4 +100,12 @@ export type ContactFormPayload = {
   budget?: string;
   timeline?: string;
   message: string;
+};
+
+export type WritingPost = {
+  slug: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+  readingTime: string;
 };

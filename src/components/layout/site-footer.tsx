@@ -16,18 +16,24 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border">
       <div
-        className={`mx-auto flex flex-col gap-8 py-12 ${layout.container.default} ${layout.section.paddingX}`}
+        className={`mx-auto flex flex-col gap-10 py-14 ${layout.container.default} ${layout.section.paddingX}`}
       >
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <p className="text-sm font-medium">{siteConfig.fullName}</p>
-            <p className="text-muted-foreground mt-1 text-sm">
-              {siteConfig.title}
+            <p className="text-lg font-semibold tracking-tight">
+              {siteConfig.fullName}
+            </p>
+            <p className="text-muted-foreground mt-2 max-w-md text-sm leading-relaxed">
+              {siteConfig.title}. {siteConfig.tagline}
+            </p>
+            <p className="text-muted-foreground mt-3 text-sm">
+              {siteConfig.location}
             </p>
             {socialLinks.length > 0 && (
-              <div className="mt-4 flex items-center gap-3">
+              <div className="mt-5 flex items-center gap-3">
                 {socialLinks.map((link) => {
-                  const Icon = socialIcons[link.label as keyof typeof socialIcons];
+                  const Icon =
+                    socialIcons[link.label as keyof typeof socialIcons];
                   return (
                     <a
                       key={link.href}
@@ -46,7 +52,7 @@ export function SiteFooter() {
           </div>
 
           <nav
-            className="flex flex-wrap gap-x-6 gap-y-2"
+            className="grid grid-cols-2 gap-x-6 gap-y-3 sm:justify-self-end"
             aria-label="Footer"
           >
             {navigation.map((item) => (
@@ -61,9 +67,17 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <p className="text-muted-foreground text-sm">
-          © {year} {siteConfig.author.name}
-        </p>
+        <div className="flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-muted-foreground text-sm">
+            © {year} {siteConfig.author.name}
+          </p>
+          <a
+            href={`mailto:${siteConfig.author.email}`}
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+          >
+            {siteConfig.author.email}
+          </a>
+        </div>
       </div>
     </footer>
   );

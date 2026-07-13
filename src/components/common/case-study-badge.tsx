@@ -6,5 +6,9 @@ export function CaseStudyBadge({ study }: { study: CaseStudy }) {
     return <Badge>Founder product</Badge>;
   }
 
+  if (study.engagement === "employment") {
+    return <Badge>Product delivery</Badge>;
+  }
+
   return <Badge>{study.category}</Badge>;
 }

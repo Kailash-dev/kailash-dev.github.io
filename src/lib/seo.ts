@@ -22,6 +22,10 @@ export function createPersonSchema(): JsonLd {
     email: author.email,
     description,
     jobTitle: siteConfig.title,
+    homeLocation: {
+      "@type": "Place",
+      name: siteConfig.location,
+    },
     knowsAbout: siteConfig.keywords,
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
