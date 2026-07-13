@@ -9,7 +9,7 @@ import { Heading, Text } from "@/components/common/typography";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/layout/page-header";
 import { cta } from "@/constants";
-import { aboutContent } from "@/data/about";
+import { aboutContent, experience } from "@/data";
 import { siteConfig } from "@/config/site";
 
 export function AboutPage() {
@@ -22,6 +22,9 @@ export function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[auto_1fr] lg:items-start">
             <FadeIn>
               <AuthorPortrait size="lg" />
+              <p className="text-muted-foreground mt-4 text-sm">
+                {siteConfig.location}
+              </p>
             </FadeIn>
             <FadeIn delay={0.06}>
               <div className="max-w-3xl">
@@ -41,6 +44,65 @@ export function AboutPage() {
               </div>
             </FadeIn>
           </div>
+        </Container>
+      </Section>
+
+      <Section bordered muted>
+        <Container>
+          <FadeIn>
+            <div className="max-w-2xl">
+              <Heading as="h2">Available for</Heading>
+              <Text variant="lead" className="text-muted-foreground mt-4">
+                Ways founders and teams usually engage.
+              </Text>
+            </div>
+          </FadeIn>
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {aboutContent.availability.map((item) => (
+              <li key={item}>
+                <Badge>{item}</Badge>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <FadeIn>
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <Heading as="h2">Career path</Heading>
+                <Text variant="lead" className="text-muted-foreground mt-4">
+                  A short view of where the work has lived.
+                </Text>
+              </div>
+              <Button asChild variant="outline">
+                <Link href="/experience">Full experience</Link>
+              </Button>
+            </div>
+          </FadeIn>
+
+          <ul className="mt-12 grid gap-8 md:grid-cols-2">
+            {experience.map((role, index) => (
+              <li key={role.id}>
+                <FadeIn delay={index * 0.05}>
+                  <article className="border-t border-border pt-6">
+                    <p className="text-muted-foreground text-sm tabular-nums">
+                      {role.start} — {role.end}
+                    </p>
+                    <Heading as="h3" className="mt-2 text-lg">
+                      {role.role}
+                    </Heading>
+                    <p className="mt-1 text-sm font-medium">{role.company}</p>
+                    <Text variant="muted" className="mt-3">
+                      {role.summary}
+                    </Text>
+                  </article>
+                </FadeIn>
+              </li>
+            ))}
+          </ul>
         </Container>
       </Section>
 
@@ -94,9 +156,12 @@ export function AboutPage() {
             ))}
           </ul>
 
-          <div className="mt-16 text-center">
+          <div className="mt-16 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg">
               <Link href={`${cta.href}#book`}>{cta.label}</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link href="/work">View selected work</Link>
             </Button>
           </div>
         </Container>

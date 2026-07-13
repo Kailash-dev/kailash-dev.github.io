@@ -12,7 +12,7 @@ export function DesktopNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
+    <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Main">
       {navigation.map((item) => {
         const isActive = pathname.startsWith(item.href);
 
@@ -40,7 +40,7 @@ export function HeaderActions() {
   return (
     <div className="flex items-center gap-1">
       <ThemeToggle />
-      <Button asChild size="sm" className="hidden shrink-0 md:inline-flex">
+      <Button asChild size="sm" className="hidden shrink-0 lg:inline-flex">
         <Link href={cta.href}>{cta.label}</Link>
       </Button>
     </div>

@@ -2,13 +2,6 @@ import Link from "next/link";
 
 import { FadeIn } from "@/components/common/fade-in";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { layout } from "@/constants";
 import { services } from "@/data/services";
 
@@ -43,23 +36,17 @@ export function ServicesPreviewSection() {
           </div>
         </FadeIn>
 
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+        <ul className="mt-12 grid gap-8 md:grid-cols-3">
           {preview.map((service, index) => (
-            <li key={service.slug}>
+            <li key={service.slug} className="border-t border-border pt-6">
               <FadeIn delay={index * 0.06}>
-                <Card className="h-full border-border/80 bg-card shadow-xs">
-                  <CardHeader>
-                    <CardTitle className="text-lg font-medium">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription>{service.audience}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-pretty text-sm text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <h3 className="text-lg font-medium">{service.title}</h3>
+                <p className="text-muted-foreground mt-2 text-sm">
+                  {service.audience}
+                </p>
+                <p className="text-pretty mt-4 text-sm text-muted-foreground">
+                  {service.description}
+                </p>
               </FadeIn>
             </li>
           ))}

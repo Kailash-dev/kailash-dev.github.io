@@ -1,53 +1,123 @@
+"use client";
+
 import Link from "next/link";
+import { Github, Linkedin } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { AuthorPortrait } from "@/components/common/author-portrait";
 import { Button } from "@/components/ui/button";
 import { cta, layout } from "@/constants";
 import { siteConfig } from "@/config/site";
+import { fadeInUp, getMotionVariants } from "@/lib/animations";
 
 export function HeroSection() {
+  const prefersReducedMotion = useReducedMotion();
+  const variants = getMotionVariants(fadeInUp, prefersReducedMotion ?? false);
+  const social = [
+    { label: "GitHub", href: siteConfig.author.github, icon: Github },
+    { label: "LinkedIn", href: siteConfig.author.linkedin, icon: Linkedin },
+  ].filter((item) => item.href.length > 0);
+
   return (
-    <section
-      className={`relative overflow-hidden border-b border-border ${layout.section.paddingY}`}
-    >
+    <section className="relative overflow-hidden border-b border-border">
+      <div className="surface-glow pointer-events-none absolute inset-0" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,oklch(0.92_0_0),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,oklch(0.2_0_0),transparent)]"
+        className="surface-grid pointer-events-none absolute inset-0 opacity-60"
         aria-hidden
       />
 
       <div
-        className={`relative mx-auto ${layout.container.default} ${layout.section.paddingX}`}
+        className={`relative mx-auto ${layout.container.default} ${layout.section.paddingX} pt-20 pb-24 md:pt-28 md:pb-32`}
       >
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
-          <div className="max-w-3xl">
-            <p className="text-sm font-medium text-muted-foreground">
+        <div className="grid items-end gap-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20">
+          <div className="max-w-4xl">
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              className="text-sm font-medium tracking-wide text-muted-foreground"
+            >
+              {siteConfig.name}
+              <span className="text-foreground/40"> · </span>
               {siteConfig.title}
-            </p>
-            <h1 className="text-balance mt-4 text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl">
-              Own your product from idea to production
-            </h1>
-            <p className="text-pretty mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              {siteConfig.description}
-            </p>
-            <p className="text-pretty mt-4 max-w-2xl text-base text-muted-foreground">
-              For founders and teams who need a senior partner — not another
-              vendor — to design, build, and ship software with clarity and
-              accountability.
-            </p>
+            </motion.p>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ delay: 0.05 }}
+              className="text-balance mt-6 text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl xl:text-8xl"
+            >
+              Own the product.
+              <span className="mt-2 block text-muted-foreground">
+                Ship what lasts.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ delay: 0.1 }}
+              className="text-pretty mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl"
+            >
+              {siteConfig.tagline} I partner with founders and teams as a senior
+              engineering owner — architecture, build, and production delivery.
+            </motion.p>
+
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ delay: 0.16 }}
+              className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            >
               <Button asChild size="lg">
-                <Link href={`${cta.href}#book`}>{cta.label}</Link>
+                <Link href={`${cta.href}#book`}>Hire me</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/work">View selected work</Link>
+                <Link href="/work">View projects</Link>
               </Button>
-            </div>
+              {siteConfig.resumeUrl ? (
+                <Button asChild variant="ghost" size="lg">
+                  <a href={siteConfig.resumeUrl} download>
+                    Download resume
+                  </a>
+                </Button>
+              ) : null}
+              <div className="flex items-center gap-1 sm:ml-2">
+                {social.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground inline-flex size-11 items-center justify-center rounded-full transition-colors"
+                      aria-label={`${siteConfig.author.name} on ${item.label}`}
+                    >
+                      <Icon className="size-5" />
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
 
-          <div className="hidden lg:block">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{ delay: 0.12 }}
+            className="hidden lg:block"
+          >
             <AuthorPortrait size="lg" className="shadow-lg" />
-          </div>
+            <p className="text-muted-foreground mt-4 text-sm">
+              {siteConfig.location}
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

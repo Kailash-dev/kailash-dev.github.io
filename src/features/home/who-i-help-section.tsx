@@ -8,14 +8,14 @@ const audiences = [
       "MVPs and v1 products with clear scope, steady delivery, and production-ready foundations.",
   },
   {
-    title: "SaaS teams",
+    title: "SaaS & product teams",
     description:
-      "Feature development, integrations, and reliability work on existing codebases.",
+      "Feature development, integrations, and reliability work when you need senior ownership without hiring full-time yet.",
   },
   {
     title: "Agencies & businesses",
     description:
-      "A technical partner who can own delivery end-to-end without constant hand-holding.",
+      "A technical partner who can own delivery end-to-end — architecture through deployment — without constant hand-holding.",
   },
 ] as const;
 
@@ -38,7 +38,7 @@ export function WhoIHelpSection() {
             </h2>
             <p className="text-pretty mt-4 text-lg text-muted-foreground">
               Decision makers who need a trusted engineering partner — not a
-              résumé or a rate card.
+              résumé dump or a rate card.
             </p>
           </div>
         </FadeIn>
