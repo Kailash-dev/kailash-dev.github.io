@@ -54,6 +54,55 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
   },
   {
+    slug: "whatsapp-profile-sync",
+    title: "WhatsApp Profile Sync",
+    category: "B2B Connector · Integration Plugin",
+    visual: "portal",
+    image: withBasePath("/images/projects/whatsapp-profile-sync.png"),
+    year: "2026",
+    summary:
+      "A self-hosted, config-driven B2B plugin that turns structured WhatsApp messages and attachments (photos/PDFs) into database profile upserts.",
+    problem:
+      "Operational teams and agencies waste hours manually copy-pasting candidate details and document attachments from WhatsApp chats into CRMs and compliance databases — introducing compliance risks and manual data entry errors.",
+    approach:
+      "Designed and built a self-hosted, entity-agnostic connector with template parsing, allowlisted sender checks, in-memory event tracing, and a local mock simulation dashboard.",
+    solution:
+      "A deterministic template-driven webhook server that parses key-value formats from allowlisted numbers, stores credentials securely, and syncs profiles to local databases or forwards them via custom HTTP API multi-part uploads.",
+    outcomes: [
+      "Config-driven templates (e.g. Worker, Lead, Profile) avoiding codebase forks",
+      "Caption-based media slot parsing (e.g. photo, resume, certificate) for secure file routing",
+      "Interactive mock simulation dashboard with a virtual WhatsApp chat simulator",
+      "HMAC signature checking and E.164 phone allowlist filters for enterprise security",
+    ],
+    context:
+      "Conceived as a reusable compliance onboarding plugin, with a reference preset built for SafeWork Global.",
+    capabilities: [
+      "Webhook architecture",
+      "YAML template parser",
+      "File uploads & API syncing",
+      "Interactive simulation dashboard",
+    ],
+    tech: ["Node.js", "TypeScript", "YAML", "Vanilla HTML/CSS/JS"],
+    architecture:
+      "A lightweight Node.js HTTP webhook server that processes incoming Meta Cloud API payloads on the fly, coupled with an in-memory event log and local disk storage driver for mock data and downloads.",
+    challenges: [
+      "Allowing developers to demo and test the full Meta webhook flow without creating Facebook Developer accounts (resolved via the in-browser simulator)",
+      "Normalizing international phone numbers dynamically to guarantee find-or-create updates",
+      "Routing attachments to target profile sub-folders safely without path traversal vulnerabilities",
+    ],
+    contributions: [
+      "Designed and implemented the core webhook parser and sync lifecycle",
+      "Created the events registry and mock media interceptor to bypass Graph API for simulator usage",
+      "Built the glassmorphic simulator UI and database explorer end-to-end",
+    ],
+    lessons: [
+      "Local testing simulators turn complex webhook integrations into interactive sales demos that close deals.",
+      "Making compliance systems self-contained and config-driven eliminates custom code sprawl.",
+    ],
+    engagement: "founder",
+    featured: true,
+  },
+  {
     slug: "vyaparpost",
     title: "VyaparPost",
     category: "Founder Product · SaaS",
