@@ -36,7 +36,6 @@ export type CaseStudy = {
   /** client = built for a client; founder = own product/idea */
   engagement?: "client" | "founder" | "employment";
   year?: string;
-  status?: string;
 };
 
 export type ExperienceRole = {
