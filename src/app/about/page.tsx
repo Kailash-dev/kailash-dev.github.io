@@ -6,7 +6,7 @@ import { AboutPage } from "@/features/about";
 export const metadata: Metadata = createMetadata({
   title: "About",
   description:
-    "Kailash Gayari — Product Engineering Partner in Vapi, Gujarat. Nearly seven years shipping web, mobile, and IoT products for founders and teams.",
+    "Kailash Gayari — Product Engineering Partner in Gujarat, India. Nearly seven years shipping web, mobile, and IoT products for founders and teams.",
   alternates: {
     canonical: "/about",
   },
