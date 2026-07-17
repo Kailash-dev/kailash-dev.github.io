@@ -262,6 +262,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Solar Monitoring Platform",
     category: "IoT · Multi-client Dashboard",
     visual: "iot",
+    image: withBasePath("/images/projects/solar-monitoring.png"),
     year: "2020–Present",
     summary:
       "Multi-client IoT dashboard for solar monitoring — real-time graphs, reusable chart systems, and performance-tuned visualization for operators who need clarity at a glance.",
@@ -310,6 +311,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Graphic Design Platform",
     category: "Creative Tooling",
     visual: "design",
+    image: withBasePath("/images/projects/graphic-design-platform.png"),
     year: "2021–Present",
     summary:
       "A Canva-like design product with SVG editing, brand kits, templates, zoomable canvas, and separate portals for admins and designers.",
@@ -365,6 +367,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Digital Invoice Solution",
     category: "B2B · Web & Mobile",
     visual: "commerce",
+    image: withBasePath("/images/projects/digital-invoice.png"),
     year: "2021–Present",
     summary:
       "End-to-end invoicing and catalog product across web and mobile — with JWT sessions, Redis-backed state, and scalable frontend architecture.",
@@ -420,6 +423,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Vipra Community App",
     category: "Community Platform",
     visual: "mobile",
+    image: withBasePath("/images/projects/vipra-community.png"),
     year: "2022–Present",
     summary:
       "Community platform with matrimony, business directory, and jobs — used by real people for real life outcomes.",
@@ -465,6 +469,7 @@ export const caseStudies: CaseStudy[] = [
     title: "nStreamConnect",
     category: "IoT · Device Experience",
     visual: "iot",
+    image: withBasePath("/images/projects/nstream-connect.png"),
     year: "2019–2020",
     summary:
       "IoT entertainment device experience for travelers — production frontend, media playback, and tight collaboration with embedded hardware.",
@@ -513,6 +518,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Raspberry Pi Monitoring Device",
     category: "Embedded · Monitoring",
     visual: "iot",
+    image: withBasePath("/images/projects/raspberry-pi-monitoring.png"),
     year: "2019–2020",
     summary:
       "Camera-based monitoring on Raspberry Pi Zero — MotionEye integration, camera modules, and Raspberry Pi OS customization for a reliable field device.",
