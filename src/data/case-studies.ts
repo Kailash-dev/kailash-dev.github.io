@@ -8,6 +8,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Compliance Marketplace",
     visual: "portal",
     image: withBasePath("/images/projects/safework-global.jpg"),
+    status: "Live hiring in 50+ countries",
     client: "SafeWork Global",
     liveUrl: "https://safeworkglobal.com",
     year: "2025",
@@ -59,6 +60,7 @@ export const caseStudies: CaseStudy[] = [
     category: "B2B Connector · Integration Plugin",
     visual: "portal",
     image: withBasePath("/images/projects/whatsapp-profile-sync.png"),
+    status: "Self-hosted & Active",
     year: "2026",
     summary:
       "A self-hosted, config-driven B2B integration plugin (SyncFlow) that turns structured WhatsApp messages and attachments into database profile upserts. Connect with me for your organization-level setup.",
@@ -108,6 +110,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Founder Product · AI Resume Optimization",
     visual: "ai",
     image: withBasePath("/images/projects/jobfit-ai.png"),
+    status: "Active SaaS workspace",
     year: "2026",
     summary:
       "An AI-powered resume optimization workspace (JobFit AI) that reviews a candidate's existing resume against a target Job Description (JD) to identify missing skills, highlight experience gaps, and suggest keyword improvements.",
@@ -152,9 +155,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "vyaparpost",
     title: "VyaparPost",
-    category: "Founder Product · SaaS",
+    category: "Founder Product · Invoicing SaaS",
     visual: "design",
     image: withBasePath("/images/projects/vyaparpost.jpg"),
+    status: "Uptime: 99.9% in Production",
     liveUrl: "https://vyaparpost.in",
     year: "2025",
     summary:
@@ -202,9 +206,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "vendor-infra",
     title: "Vendor Infra",
-    category: "B2B Industry Platform",
+    category: "Search Portal · Infrastructure B2B",
     visual: "portal",
     image: withBasePath("/images/projects/vendor-infra.jpg"),
+    status: "Active B2B search engine",
     client: "Vendor Infra",
     liveUrl: "https://vendorinfra.com",
     year: "2024–2025",
@@ -263,6 +268,7 @@ export const caseStudies: CaseStudy[] = [
     category: "IoT · Multi-client Dashboard",
     visual: "iot",
     image: withBasePath("/images/projects/solar-monitoring.png"),
+    status: "Active live telemetry",
     year: "2020–Present",
     summary:
       "Multi-client IoT dashboard for solar monitoring — real-time graphs, reusable chart systems, and performance-tuned visualization for operators who need clarity at a glance.",
@@ -312,6 +318,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Creative Tooling",
     visual: "design",
     image: withBasePath("/images/projects/graphic-design-platform.png"),
+    status: "Active editor workspace",
     year: "2021–Present",
     summary:
       "A Canva-like design product with SVG editing, brand kits, templates, zoomable canvas, and separate portals for admins and designers.",
@@ -368,6 +375,7 @@ export const caseStudies: CaseStudy[] = [
     category: "B2B · Web & Mobile",
     visual: "commerce",
     image: withBasePath("/images/projects/digital-invoice.png"),
+    status: "Active invoicing system",
     year: "2021–Present",
     summary:
       "End-to-end invoicing and catalog product across web and mobile — with JWT sessions, Redis-backed state, and scalable frontend architecture.",
@@ -424,6 +432,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Community Platform",
     visual: "mobile",
     image: withBasePath("/images/projects/vipra-community.png"),
+    status: "Active community hub",
     year: "2022–Present",
     summary:
       "Community platform with matrimony, business directory, and jobs — used by real people for real life outcomes.",
@@ -470,6 +479,7 @@ export const caseStudies: CaseStudy[] = [
     category: "IoT · Device Experience",
     visual: "iot",
     image: withBasePath("/images/projects/nstream-connect.png"),
+    status: "Active on transit hardware",
     year: "2019–2020",
     summary:
       "IoT entertainment device experience for travelers — production frontend, media playback, and tight collaboration with embedded hardware.",
@@ -519,6 +529,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Embedded · Monitoring",
     visual: "iot",
     image: withBasePath("/images/projects/raspberry-pi-monitoring.png"),
+    status: "Active field video capture",
     year: "2019–2020",
     summary:
       "Camera-based monitoring on Raspberry Pi Zero — MotionEye integration, camera modules, and Raspberry Pi OS customization for a reliable field device.",

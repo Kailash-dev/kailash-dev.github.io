@@ -1,4 +1,6 @@
-import { Suspense } from "react";
+"use client";
+
+import { useState, Suspense } from "react";
 import { CalendlyEmbed } from "@/components/common/calendly-embed";
 import { Container } from "@/components/common/container";
 import { FadeIn } from "@/components/common/fade-in";
@@ -9,8 +11,12 @@ import { PageHeader } from "@/components/layout/page-header";
 import { siteConfig } from "@/config/site";
 import { faqItems } from "@/data";
 import { ContactForm } from "./contact-form";
+import { ProjectEstimator } from "./project-estimator";
+import type { ContactFormPayload } from "@/types";
 
 export function ContactPage() {
+  const [prefill, setPrefill] = useState<Partial<ContactFormPayload> | null>(null);
+
   return (
     <>
       <PageHeader
@@ -28,47 +34,59 @@ export function ContactPage() {
 
       <Section bordered muted>
         <Container>
-          <div className="grid gap-16 lg:grid-cols-2">
-            <FadeIn>
-              <div>
-                <Heading as="h2" className="text-2xl">
-                  Prefer to write?
-                </Heading>
-                <Text variant="muted" className="mt-3">
-                  Share your project goals, timeline, and constraints. I&apos;ll
-                  let you know if we&apos;re a good fit — honestly and quickly.
-                </Text>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+            {/* Interactive Scope Calculator */}
+            <div className="space-y-8">
+              <FadeIn>
+                <ProjectEstimator onApply={(data) => setPrefill(data)} />
+              </FadeIn>
 
-                <div className="mt-8 space-y-4">
-                  <div>
-                    <p className="text-sm font-medium">Email</p>
-                    <a
-                      href={`mailto:${siteConfig.author.email}`}
-                      className="text-muted-foreground mt-1 text-sm underline-offset-4 transition-colors hover:text-foreground hover:underline"
-                    >
-                      {siteConfig.author.email}
-                    </a>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">Response time</p>
-                    <p className="text-muted-foreground mt-1 text-sm">
-                      Within one business day
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">Time zones</p>
-                    <p className="text-muted-foreground mt-1 text-sm">
-                      US, Canada, UK, Europe, Australia
-                    </p>
+              {/* Minimalist direct email backup info */}
+              <FadeIn delay={0.05}>
+                <div className="rounded-xl border border-border bg-card/10 p-6 space-y-4">
+                  <Heading as="h4" className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    Direct Correspondence
+                  </Heading>
+                  <div className="grid grid-cols-2 gap-4 text-xs md:text-sm">
+                    <div>
+                      <p className="font-semibold text-foreground">Email</p>
+                      <a
+                        href={`mailto:${siteConfig.author.email}`}
+                        className="text-muted-foreground mt-0.5 block underline-offset-4 hover:text-foreground hover:underline"
+                      >
+                        {siteConfig.author.email}
+                      </a>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">Time Zones</p>
+                      <p className="text-muted-foreground mt-0.5">US, EU, UK, AU & India</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
 
+            {/* Contact Form */}
             <FadeIn delay={0.08}>
-              <Suspense fallback={<div className="h-64 flex items-center justify-center text-sm text-muted-foreground">Loading contact form...</div>}>
-                <ContactForm />
-              </Suspense>
+              <div className="rounded-xl border border-border bg-card p-6 md:p-8">
+                <div className="mb-6">
+                  <Heading as="h3" className="text-xl font-bold tracking-tight">
+                    Prefer to write?
+                  </Heading>
+                  <Text variant="small" className="mt-1">
+                    Share your requirements directly below. I will analyze and respond in 24 hours.
+                  </Text>
+                </div>
+                <Suspense
+                  fallback={
+                    <div className="h-64 flex items-center justify-center text-sm text-muted-foreground">
+                      Loading contact form...
+                    </div>
+                  }
+                >
+                  <ContactForm prefill={prefill} />
+                </Suspense>
+              </div>
             </FadeIn>
           </div>
         </Container>

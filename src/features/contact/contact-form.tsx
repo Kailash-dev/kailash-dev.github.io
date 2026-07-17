@@ -76,7 +76,7 @@ async function submitContactForm(
   return { method: "mailto", mailto: buildMailto(payload) };
 }
 
-export function ContactForm() {
+export function ContactForm({ prefill }: { prefill?: Partial<ContactFormPayload> | null }) {
   const searchParams = useSearchParams();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -92,6 +92,15 @@ export function ContactForm() {
       }));
     }
   }, [serviceParam]);
+
+  useEffect(() => {
+    if (prefill) {
+      setForm((prev) => ({
+        ...prev,
+        ...prefill,
+      }));
+    }
+  }, [prefill]);
 
   function handleChange(
     e: React.ChangeEvent<

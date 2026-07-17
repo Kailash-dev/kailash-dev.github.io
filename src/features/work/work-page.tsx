@@ -102,8 +102,19 @@ export function BentoCard({ study, className, isWide = false, isFull = false }: 
             isFull ? "lg:w-2/5" : "lg:w-1/2"
           )}>
             <div>
-              <div className="flex items-center justify-between gap-2">
-                <CaseStudyBadge study={study} />
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <CaseStudyBadge study={study} />
+                  {study.status && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/15">
+                      <span className="relative flex h-1 w-1">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-1 w-1 bg-emerald-500"></span>
+                      </span>
+                      {study.status}
+                    </span>
+                  )}
+                </div>
                 {study.year && (
                   <span className="text-xs text-muted-foreground font-medium">{study.year}</span>
                 )}
@@ -192,8 +203,19 @@ export function BentoCard({ study, className, isWide = false, isFull = false }: 
 
           <div className="p-6 flex-1 flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between gap-2">
-                <CaseStudyBadge study={study} />
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <CaseStudyBadge study={study} />
+                  {study.status && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-600 dark:text-emerald-400 border border-emerald-500/15">
+                      <span className="relative flex h-1 w-1">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-1 w-1 bg-emerald-500"></span>
+                      </span>
+                      {study.status}
+                    </span>
+                  )}
+                </div>
                 {study.year && (
                   <span className="text-xs text-muted-foreground font-medium">{study.year}</span>
                 )}
