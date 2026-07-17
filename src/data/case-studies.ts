@@ -105,38 +105,38 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "jobfit-ai",
     title: "JobFit AI",
-    category: "Founder Product · Architecture & AI",
+    category: "Founder Product · AI Resume Optimization",
     visual: "ai",
     image: withBasePath("/images/projects/jobfit-ai.png"),
     year: "2026",
     summary:
-      "An enterprise-grade, contract-first AI recruiting platform designed with a strict Domain Freeze, Principal-Engineer-reviewed sequence architectures, and phase-based compliance pipelines.",
+      "An AI-powered resume optimization workspace (JobFit AI) that reviews a candidate's existing resume against a target Job Description (JD) to identify missing skills, highlight experience gaps, and suggest keyword improvements.",
     problem:
-      "Many AI-based recruiting applications suffer from code fragility, non-deterministic matching logic (hallucinations), and lack of auditability. Developers jump into code without frozen domain interfaces, leading to data-model drift.",
+      "Candidates struggle to align their resumes with applicant tracking systems (ATS) and specific job descriptions, leading to high rejection rates due to missing keywords or poorly presented experience.",
     approach:
-      "Designed and documented a 14-step architecture package with a formal Domain Freeze (Phase 0-13 roadmap), strict JSON schema validation gates, and an ADR (Architecture Decision Record) change-control process.",
+      "Designed and documented a contract-first resume optimization pipeline (Phase 0-13 roadmap) with a formal Domain Freeze, structured AI prompt schemas, and an ADR (Architecture Decision Record) change-control process.",
     solution:
-      "An AI matching assistant built on structured domain contracts, strict guardrails (Phase 5), and semantic scoring pipelines. No feature code was written until contracts were frozen, ensuring predictability and zero AI compliance drift.",
+      "An interactive consumer workspace where users paste a target JD and upload their existing resume. The platform reviews the alignment, scores compatibility, and outlines exactly which keywords, certifications, or experience records are missing — providing inline rewriting suggestions.",
     outcomes: [
-      "14-part formal architecture package (from SRS to deployment architecture)",
-      "Domain Freeze contract package (contracts/) serving as the implementation source of truth",
-      "Change-control workflow enforced via Architecture Decision Records (ADRs) under adr/",
-      "AI matching pipeline with Phase 5 guardrails blocking unvalidated profile exports",
+      "Automated resume-to-JD gap analysis detailing missing skills and experience gaps",
+      "Actionable, inline keyword insertion suggestions optimized for modern applicant tracking systems (ATS)",
+      "Contract-first backend architecture (contracts/) ensuring fast, deterministic parsing of unstructured PDF files",
+      "Interactive progress checklist guiding users to improve their score before downloading their optimized resume",
     ],
     context:
-      "Conceived as a developer-first, audit-compliant matching engine with a principal-engineer-reviewed safety and deployment blueprint.",
+      "Conceived as a developer-to-consumer career tool, with an architecture designed to integrate with automated job application pipelines.",
     capabilities: [
-      "Domain-driven design",
-      "Contract-first API design",
-      "AI guardrails pipeline",
-      "Change control & ADRs",
+      "AI Resume Parsing",
+      "Semantic Gap Analysis",
+      "Resume Optimization",
+      "Contract-First APIs",
     ],
     tech: ["TypeScript", "JSON Schema", "Gemini API", "Vector Databases", "Markdown Architecture"],
     architecture:
-      "Strict contract-based monorepo layout (referenced in docs/03-folder-structure.md) where APIs, database schemas, and AI pipelines are validated against frozen contract definitions.",
+      "Strict contract-based design (docs/contracts/) where resume analysis pipelines, prompt formats, and JSON outputs are validated against frozen contract definitions.",
     challenges: [
-      "Enforcing the approval gate so that no feature code is written prior to domain agreement",
-      "Integrating semantic resume scoring logic with deterministic validation guardrails (Phase 5)",
+      "Parsing multi-column PDF layouts accurately to extract existing timeline experience",
+      "Generating helpful, non-generic feedback that goes beyond simple keyword-stuffing",
     ],
     contributions: [
       "Authored the complete 14-part architecture package and sequence design",
@@ -144,7 +144,7 @@ export const caseStudies: CaseStudy[] = [
       "Built the visual system blueprints and schema validation scripts",
     ],
     lessons: [
-      "When the system deals with hiring compliance, code quality begins with frozen interfaces — not exploratory coding.",
+      "A great AI tool doesn't rewrite the resume for the user; it guides the user with clear, explainable feedback on what to change.",
     ],
     engagement: "founder",
     featured: true,
