@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { CalendlyEmbed } from "@/components/common/calendly-embed";
 import { Container } from "@/components/common/container";
 import { FadeIn } from "@/components/common/fade-in";
@@ -65,7 +66,9 @@ export function ContactPage() {
             </FadeIn>
 
             <FadeIn delay={0.08}>
-              <ContactForm />
+              <Suspense fallback={<div className="h-64 flex items-center justify-center text-sm text-muted-foreground">Loading contact form...</div>}>
+                <ContactForm />
+              </Suspense>
             </FadeIn>
           </div>
         </Container>

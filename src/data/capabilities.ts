@@ -33,6 +33,7 @@ export const capabilityDomains: CapabilityDomain[] = [
       "React & Next.js applications",
       "Angular product platforms",
       "React Native mobile apps",
+      "Tailwind CSS styling & custom styling",
       "Design systems & component libraries",
       "Real-time dashboards & data visualization",
     ],
@@ -43,7 +44,8 @@ export const capabilityDomains: CapabilityDomain[] = [
       "Backend foundations that stay reliable under real usage — auth, data, and integrations included.",
     items: [
       "Node.js & Express APIs",
-      "PostgreSQL & MySQL data modeling",
+      "Prisma ORM data modeling",
+      "PostgreSQL & MySQL database design",
       "Redis session & cache layers",
       "JWT authentication & authorization",
       "Third-party integrations",
@@ -54,9 +56,11 @@ export const capabilityDomains: CapabilityDomain[] = [
     description:
       "Getting software into production — and keeping it healthy once users depend on it.",
     items: [
-      "AWS EC2 & RDS",
+      "AWS EC2, RDS & hosting",
+      "Vercel & Netlify cloud deployments",
       "Docker containerization",
-      "GitHub Actions CI/CD",
+      "GitHub Actions CI/CD pipelines",
+      "Sentry error monitoring & telemetry",
       "Nginx & Linux operations",
       "Playwright & Jest testing",
     ],

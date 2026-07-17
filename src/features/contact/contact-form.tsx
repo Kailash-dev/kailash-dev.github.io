@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -76,9 +77,21 @@ async function submitContactForm(
 }
 
 export function ContactForm() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState<FormState>(initialState);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const serviceParam = searchParams ? searchParams.get("service") : null;
+
+  useEffect(() => {
+    if (serviceParam) {
+      setForm((prev) => ({
+        ...prev,
+        message: `Hi Kailash,\n\nI'd like to discuss the "${serviceParam}" service for my project.\n\n`,
+      }));
+    }
+  }, [serviceParam]);
 
   function handleChange(
     e: React.ChangeEvent<

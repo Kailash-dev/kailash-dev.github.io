@@ -23,7 +23,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/kailash-gayari-720327156/",
     github: "https://github.com/Kailash-dev",
   },
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
+  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/kailash514910/30min",
   /** Set when a public resume PDF is available under /public */
   resumeUrl: "",
   keywords: [

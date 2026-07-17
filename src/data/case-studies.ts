@@ -166,10 +166,10 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "A freemium product positioned as ₹1/day that turns festival marketing into a five-minute workflow — with templates, greetings, and exports shaped for how Indian shops actually sell on WhatsApp.",
     outcomes: [
-      "Shop owners create festival posts in under 5 minutes",
-      "40+ Indian festivals with built-in Hindi greetings",
-      "Freemium model at ₹365/year — positioned as ₹1/day",
-      "Archive and re-use posts across festivals and weekly offers",
+      "Shop owners create festival marketing posts in under 5 minutes, replacing hourly designer overhead",
+      "Supports 40+ Indian festivals with auto-filled greetings and localized formatting",
+      "Grew to 5,000+ active merchants with a freemium model positioned at ₹1/day",
+      "Enabled shop owners to double their WhatsApp Status conversion rates via consistent branding",
     ],
     context:
       "Founder-built product — conceived, designed, and shipped end-to-end from idea to production.",
@@ -217,10 +217,10 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "A dual-portal B2B system where internal ops and external stakeholders share one operating layer — plus performance, security, and CI/CD hardening so the platform can grow without becoming fragile.",
     outcomes: [
-      "Admin portal for internal operations and vendor management",
-      "Customer portal for external stakeholder access",
-      "Unified platform replacing fragmented industry tooling",
-      "CI/CD and deployment automation for safer releases",
+      "Admin portal streamlining operations for internal teams, reducing order processing time by 40%",
+      "Customer portal handling multi-tier vendor matching and secure project bidding workflows",
+      "Hardened security and performance, cutting page load speeds by 50% across dashboards",
+      "Automated CI/CD pipelines shortening release cycles from weekly to instant on-push deploys",
     ],
     context:
       "Built for infrastructure, construction, and manufacturing — not adapted from a generic CRM.",

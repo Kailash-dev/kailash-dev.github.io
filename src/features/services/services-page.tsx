@@ -28,18 +28,27 @@ export function ServicesPage() {
           <ul className="grid gap-6 md:grid-cols-2">
             {services.map((service) => (
               <li key={service.slug}>
-                <Card className="h-full border-border/80 bg-card shadow-xs">
-                  <CardHeader>
-                    <CardTitle className="text-xl font-medium">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription>{service.audience}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-pretty text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
+                <Card className="h-full border-border/80 bg-card shadow-xs flex flex-col justify-between">
+                  <div>
+                    <CardHeader>
+                      <CardTitle className="text-xl font-medium">
+                        {service.title}
+                      </CardTitle>
+                      <CardDescription>{service.audience}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-pretty text-muted-foreground">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </div>
+                  <div className="px-6 pb-6 pt-0">
+                    <Button asChild variant="outline" size="sm" className="w-fit">
+                      <Link href={`/contact?service=${encodeURIComponent(service.title)}#book`}>
+                        Discuss this service
+                      </Link>
+                    </Button>
+                  </div>
                 </Card>
               </li>
             ))}
