@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { ArrowUpRight, X } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ArrowUpRight, X, ArrowRight, Cpu, Database, Server, Globe } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { Badge } from "@/components/common/badge";
@@ -17,10 +17,227 @@ import { Button } from "@/components/ui/button";
 import { cta } from "@/constants";
 import { getCaseStudyBySlug } from "@/data";
 import { createCaseStudySchema } from "@/lib/seo";
+import { cn } from "@/lib/utils";
+import type { CaseStudy } from "@/types";
 
-type CaseStudyPageProps = {
-  slug: string;
+type FlowNode = {
+  id: string;
+  label: string;
+  description: string;
+  tech: string[];
 };
+
+const getFlowNodes = (study: CaseStudy): FlowNode[] => {
+  const tech = study.tech;
+  const isIot = study.visual === "iot" || study.category.toLowerCase().includes("iot");
+  const isDesign = study.visual === "design";
+  const isMobile = study.visual === "mobile";
+
+  if (isIot) {
+    return [
+      {
+        id: "device",
+        label: "Field Device / OS",
+        description: "Raspberry Pi or telemetry sensor node running tailored Linux configurations.",
+        tech: tech.filter(t => ["Raspberry Pi Zero", "Raspberry Pi OS", "Embedded Linux", "Hardware", "IoT", "Embedded OS"].includes(t)),
+      },
+      {
+        id: "ingestion",
+        label: "Ingestion Engine",
+        description: "MotionEye or telemetry service parsing inputs, handling camera capture, and buffering logs.",
+        tech: tech.filter(t => ["MotionEye", "Camera module", "RxJS", "IoT telemetry", "Charting"].includes(t)),
+      },
+      {
+        id: "transport",
+        label: "State webhooks / APIs",
+        description: "Deterministic JSON/YAML webhooks normalizing inputs and routing payloads securely.",
+        tech: tech.filter(t => ["Node.js", "TypeScript", "REST APIs", "YAML", "Webhook"].includes(t)),
+      },
+      {
+        id: "destination",
+        label: "B2B Cloud Portal",
+        description: "Multi-tenant dashboard rendering status, real-time analytics graphs, and alerts.",
+        tech: tech.filter(t => ["Angular", "React", "PostgreSQL", "Cloud deployment"].includes(t)),
+      },
+    ].filter(n => n.tech.length > 0 || n.id === "device" || n.id === "destination");
+  }
+
+  if (isDesign) {
+    return [
+      {
+        id: "editor",
+        label: "Canvas Editor Engine",
+        description: "Fabric.js canvas wrapper managing canvas scaling, SVG rendering, and layer state.",
+        tech: tech.filter(t => ["Fabric.js", "SVG", "Canvas editing"].includes(t)),
+      },
+      {
+        id: "serialization",
+        label: "State JSON Serializer",
+        description: "Normalizing designs as JSON payloads for secure template storage and reload logic.",
+        tech: tech.filter(t => ["JSON persistence", "Brand systems"].includes(t)),
+      },
+      {
+        id: "portal",
+        label: "Angular Shell UI",
+        description: "Role-separated application interfaces for designers and operators with authentication.",
+        tech: tech.filter(t => ["Angular", "Angular Material", "TypeScript", "Role-based portals"].includes(t)),
+      },
+    ].filter(n => n.tech.length > 0 || n.id === "editor" || n.id === "portal");
+  }
+
+  if (isMobile) {
+    return [
+      {
+        id: "client",
+        label: "React Native Client",
+        description: "Native mobile application client presenting community modules and profile details.",
+        tech: tech.filter(t => ["React Native", "Auth & sessions"].includes(t)),
+      },
+      {
+        id: "auth",
+        label: "JWT Auth / REST APIs",
+        description: "Secure gateway verification, route guards, and payload validation layers.",
+        tech: tech.filter(t => ["JWT", "REST APIs", "Node.js"].includes(t)),
+      },
+      {
+        id: "storage",
+        label: "Backend & Database",
+        description: "Relational database model holding profile, business, and job listings.",
+        tech: tech.filter(t => ["Node.js", "PostgreSQL", "Redis"].includes(t)),
+      },
+    ].filter(n => n.tech.length > 0 || n.id === "client" || n.id === "storage");
+  }
+
+  // Default SaaS / Web application flow
+  return [
+    {
+      id: "client",
+      label: "Client Web / UI",
+      description: "Fast-loading React/Next.js/Angular application layer focusing on premium UX and layouts.",
+      tech: tech.filter(t => ["React", "TypeScript", "Angular", "Vanilla HTML/CSS/JS"].includes(t)),
+    },
+    {
+      id: "server",
+      label: "Node / Next.js Server",
+      description: "Server-side business logic, security middleware, and third-party gateway integrations.",
+      tech: tech.filter(t => ["Node.js", "Node", "TypeScript", "YAML template parser"].includes(t)),
+    },
+    {
+      id: "cache",
+      label: "Redis Cache / Webhooks",
+      description: "Webhook template parsing, in-memory event queues, and allowlisted sender traces.",
+      tech: tech.filter(t => ["Redis", "Webhook architecture", "File uploads & API syncing"].includes(t)),
+    },
+    {
+      id: "storage",
+      label: "PostgreSQL Database",
+      description: "Secure relational storage holding transactional accounts, verification states, and tables.",
+      tech: tech.filter(t => ["PostgreSQL", "Payments & escrow"].includes(t)),
+    },
+  ].filter(n => n.tech.length > 0 || n.id === "client" || n.id === "storage");
+};
+
+function ArchitectureExplorer({ study }: { study: CaseStudy }) {
+  const nodes = useMemo(() => getFlowNodes(study), [study]);
+  const [activeNodeId, setActiveNodeId] = useState(nodes[0]?.id || "");
+
+  const activeNode = useMemo(() => {
+    return nodes.find(n => n.id === activeNodeId) || nodes[0];
+  }, [nodes, activeNodeId]);
+
+  if (nodes.length === 0) return null;
+
+  const getIcon = (id: string) => {
+    switch (id) {
+      case "device": return <Cpu className="size-4" />;
+      case "editor": return <Cpu className="size-4" />;
+      case "client": return <Globe className="size-4" />;
+      case "ingestion": return <Server className="size-4" />;
+      case "transport": return <ArrowRight className="size-4" />;
+      case "auth": return <Server className="size-4" />;
+      case "server": return <Server className="size-4" />;
+      case "cache": return <Server className="size-4" />;
+      case "storage": return <Database className="size-4" />;
+      case "destination": return <Database className="size-4" />;
+      case "portal": return <Globe className="size-4" />;
+      default: return <Server className="size-4" />;
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Node blocks row */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2 overflow-x-auto pb-2">
+        {nodes.map((node, idx) => {
+          const isActive = node.id === activeNodeId;
+          return (
+            <div key={node.id} className="flex flex-col md:flex-row items-stretch md:items-center flex-1 min-w-[140px]">
+              <button
+                onClick={() => setActiveNodeId(node.id)}
+                className={cn(
+                  "flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-xs font-medium transition-all text-left w-full focus:outline-none",
+                  isActive
+                    ? "bg-foreground text-background border-foreground shadow-sm"
+                    : "bg-muted/40 border-border/40 text-muted-foreground hover:border-muted-foreground/40 hover:text-foreground"
+                )}
+              >
+                <span className={cn(
+                  "p-1 rounded-md",
+                  isActive ? "bg-background/20 text-background" : "bg-muted text-muted-foreground"
+                )}>
+                  {getIcon(node.id)}
+                </span>
+                <span className="truncate">{node.label}</span>
+              </button>
+              
+              {idx < nodes.length - 1 && (
+                <div className="flex justify-center py-2 md:py-0 md:px-2 text-muted-foreground/30">
+                  <ArrowRight className="size-4 rotate-90 md:rotate-0" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Detail card of active node */}
+      {activeNode && (
+        <div className="rounded-lg bg-muted/30 border border-border/30 p-5 animate-in fade-in duration-200">
+          <div className="flex items-center justify-between gap-4">
+            <h4 className="text-sm font-semibold tracking-tight text-foreground flex items-center gap-2">
+              <span className="p-1 rounded bg-foreground/5 text-foreground">
+                {getIcon(activeNode.id)}
+              </span>
+              {activeNode.label}
+            </h4>
+            <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+              Component Node
+            </span>
+          </div>
+          
+          <p className="mt-2.5 text-xs md:text-sm text-muted-foreground leading-relaxed">
+            {activeNode.description}
+          </p>
+
+          {activeNode.tech.length > 0 && (
+            <div className="mt-4 pt-4 border-t border-border/20">
+              <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider block">
+                Technologies Involved:
+              </span>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {activeNode.tech.map(t => (
+                  <span key={t} className="inline-flex items-center rounded-full bg-background border border-border/50 px-2 py-0.5 text-[10px] font-medium text-foreground">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function DetailBlock({
   title,
@@ -41,7 +258,7 @@ function DetailBlock({
   );
 }
 
-export function CaseStudyPage({ slug }: CaseStudyPageProps) {
+export function CaseStudyPage({ slug }: { slug: string }) {
   const [isZoomed, setIsZoomed] = useState(false);
   const study = getCaseStudyBySlug(slug);
 
@@ -137,9 +354,18 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
               </DetailBlock>
 
               <DetailBlock title="Architecture">
-                <Text className="text-muted-foreground">
+                <Text className="text-muted-foreground mb-6">
                   {study.architecture}
                 </Text>
+                
+                {/* Visual Architecture Explorer */}
+                <div className="rounded-xl border border-border/40 bg-card/20 p-6 backdrop-blur-sm mt-6">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                    Interactive System Architecture Flow
+                  </p>
+                  
+                  <ArchitectureExplorer study={study} />
+                </div>
               </DetailBlock>
 
               <DetailBlock title="Challenges">
