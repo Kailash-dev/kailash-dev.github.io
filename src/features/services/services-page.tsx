@@ -42,7 +42,12 @@ export function ServicesPage() {
                       </p>
                     </CardContent>
                   </div>
-                  <div className="px-6 pb-6 pt-0">
+                  <div className="px-6 pb-6 pt-0 flex items-center justify-between gap-4">
+                    {service.price ? (
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        {service.price}
+                      </span>
+                    ) : <div />}
                     <Button asChild variant="outline" size="sm" className="w-fit">
                       <Link href={`/contact?service=${encodeURIComponent(service.title)}#book`}>
                         Discuss this service

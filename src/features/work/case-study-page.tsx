@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { ArrowUpRight, X } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { Badge } from "@/components/common/badge";
@@ -38,6 +42,7 @@ function DetailBlock({
 }
 
 export function CaseStudyPage({ slug }: CaseStudyPageProps) {
+  const [isZoomed, setIsZoomed] = useState(false);
   const study = getCaseStudyBySlug(slug);
 
   if (!study) {
@@ -97,11 +102,20 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
                 ) : null}
               </div>
             </div>
-            <CaseStudyVisual
-              visual={study.visual}
-              title={study.title}
-              image={study.image}
-            />
+            <div className="relative group/visual cursor-zoom-in" onClick={() => setIsZoomed(true)}>
+              <CaseStudyVisual
+                visual={study.visual}
+                title={study.title}
+                image={study.image}
+              />
+              {study.image && (
+                <div className="absolute inset-0 bg-black/0 group-hover/visual:bg-black/10 flex items-center justify-center transition-colors duration-300 rounded-xl">
+                  <span className="text-white text-xs bg-black/60 px-3 py-1.5 rounded-full font-medium opacity-0 group-hover/visual:opacity-100 transition-opacity duration-300">
+                    Click to zoom
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </Container>
       </div>
@@ -248,6 +262,29 @@ export function CaseStudyPage({ slug }: CaseStudyPageProps) {
           </div>
         </Container>
       </Section>
+
+      {isZoomed && study.image && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out animate-in fade-in duration-200"
+          onClick={() => setIsZoomed(false)}
+        >
+          <button
+            onClick={() => setIsZoomed(false)}
+            className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+          >
+            <X className="size-6" />
+          </button>
+          <div className="relative w-full max-w-5xl aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-muted">
+            <Image
+              src={study.image}
+              alt={`Zoomed screenshot of ${study.title}`}
+              fill
+              sizes="100vw"
+              className="object-contain"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

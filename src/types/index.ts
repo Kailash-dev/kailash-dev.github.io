@@ -75,6 +75,7 @@ export type Service = {
   title: string;
   description: string;
   audience: string;
+  price?: string;
 };
 
 export type FAQItem = {
