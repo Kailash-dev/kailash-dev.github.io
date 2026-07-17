@@ -1,7 +1,7 @@
 export const aboutContent = {
   headline: "Senior product engineer. Partner for founders who need ownership.",
   intro:
-    "I'm Kailash Gayari — a Product Engineering Partner based in Vapi, Gujarat, with nearly seven years building production web, mobile, backend, and IoT systems. I help founders and growing teams take software from idea to production with clarity and accountability.",
+    "I'm Kailash Gayari — a Product Engineering Partner based in Gujarat, India, with nearly seven years building production web, mobile, backend, and IoT systems. I help founders and growing teams take software from idea to production with clarity and accountability.",
   story: [
     "Since 2019 I've shipped entertainment devices, IoT dashboards, design tools, invoice platforms, community products, and founder-facing SaaS — always with the same standard: production software that decision makers can trust.",
     "I work best when ownership is clear. Architecture, delivery, and deployment are not separate conversations — they're one engagement. That is how complex products stay coherent.",

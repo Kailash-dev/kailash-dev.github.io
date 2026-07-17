@@ -12,7 +12,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kailash-dev.github.io",
   ogImage: withBasePath("/opengraph-image"),
   locale: "en_US",
-  location: "Vapi, Gujarat, India",
+  location: "Gujarat, India",
   author: {
     name: "Kailash Gayari",
     email: "kailash514910@gmail.com",
