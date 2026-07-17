@@ -55,13 +55,13 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "whatsapp-profile-sync",
-    title: "WhatsApp Profile Sync",
+    title: "SyncFlow (WhatsApp Profile Sync)",
     category: "B2B Connector · Integration Plugin",
     visual: "portal",
     image: withBasePath("/images/projects/whatsapp-profile-sync.png"),
     year: "2026",
     summary:
-      "A self-hosted, config-driven B2B plugin that turns structured WhatsApp messages and attachments (photos/PDFs) into database profile upserts.",
+      "A self-hosted, config-driven B2B integration plugin (SyncFlow) that turns structured WhatsApp messages and attachments into database profile upserts. Connect with me for your organization-level setup.",
     problem:
       "Operational teams and agencies waste hours manually copy-pasting candidate details and document attachments from WhatsApp chats into CRMs and compliance databases — introducing compliance risks and manual data entry errors.",
     approach:
@@ -75,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
       "HMAC signature checking and E.164 phone allowlist filters for enterprise security",
     ],
     context:
-      "Conceived as a reusable compliance onboarding plugin, with a reference preset built for SafeWork Global.",
+      "Conceived as a reusable compliance onboarding plugin, with a reference preset built for SafeWork Global. Connect with me for your organization-level setup.",
     capabilities: [
       "Webhook architecture",
       "YAML template parser",
@@ -98,6 +98,52 @@ export const caseStudies: CaseStudy[] = [
     lessons: [
       "Local testing simulators turn complex webhook integrations into interactive sales demos that close deals.",
       "Making compliance systems self-contained and config-driven eliminates custom code sprawl.",
+    ],
+    engagement: "founder",
+    featured: true,
+  },
+  {
+    slug: "jobfit-ai",
+    title: "JobFit AI",
+    category: "Founder Product · AI Recruiting",
+    visual: "ai",
+    image: withBasePath("/images/projects/jobfit-ai.png"),
+    year: "2026",
+    summary:
+      "An AI-powered candidate screening and resume matching assistant that scores job applicants based on semantic fit and custom compliance rules.",
+    problem:
+      "Recruiters scan hundreds of unstructured resumes manually, leading to candidate fatigue and high mismatch rates between worker experience and actual job descriptions.",
+    approach:
+      "Building a semantic scoring engine utilizing fine-tuned embedding models to match parsed resume details (skills, tenure, certifications) against role constraints.",
+    solution:
+      "An AI matching assistant that parses uploaded candidate profiles, extracts core credentials, and assigns a semantic compatibility score with clear pros/cons for recruiters — completely bypassing keywords-only screening.",
+    outcomes: [
+      "Semantic candidate-to-job matching replacing fragile keywords-based resume scanners",
+      "Auto-scoring index based on certifications, experience length, and skill proximity",
+      "Recruiter explanation panel detailing key reasons for match approval or warnings",
+      "Pipeline integration with applicant tracking systems (ATS) and local file storage",
+    ],
+    context:
+      "Currently under active development — designed to integrate seamlessly alongside profile onboarding connectors (like SyncFlow).",
+    capabilities: [
+      "Semantic Search",
+      "Resume Parsing",
+      "Recruiting Automation",
+      "AI Scoring Pipelines",
+    ],
+    tech: ["TypeScript", "Python", "Next.js", "Gemini API", "Vector Databases"],
+    architecture:
+      "Vector embeddings database layer coupled with Gemini LLM context windows to evaluate parsed profile documents against strict multi-role job requirements.",
+    challenges: [
+      "Ensuring fair and bias-free scoring rules for non-traditional career paths",
+      "Parsing unstructured multi-column PDF layouts without layout data loss",
+    ],
+    contributions: [
+      "Architecting the resume vector embedding and ranking schema",
+      "Designing the recruiter explanation dashboard and visual match indicators",
+    ],
+    lessons: [
+      "AI screening should assist recruiters with semantic reasoning, not hide the underlying data behind a black box.",
     ],
     engagement: "founder",
     featured: true,
