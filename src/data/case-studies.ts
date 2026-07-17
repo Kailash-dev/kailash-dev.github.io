@@ -105,45 +105,46 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "jobfit-ai",
     title: "JobFit AI",
-    category: "Founder Product · AI Recruiting",
+    category: "Founder Product · Architecture & AI",
     visual: "ai",
     image: withBasePath("/images/projects/jobfit-ai.png"),
     year: "2026",
     summary:
-      "An AI-powered candidate screening and resume matching assistant that scores job applicants based on semantic fit and custom compliance rules.",
+      "An enterprise-grade, contract-first AI recruiting platform designed with a strict Domain Freeze, Principal-Engineer-reviewed sequence architectures, and phase-based compliance pipelines.",
     problem:
-      "Recruiters scan hundreds of unstructured resumes manually, leading to candidate fatigue and high mismatch rates between worker experience and actual job descriptions.",
+      "Many AI-based recruiting applications suffer from code fragility, non-deterministic matching logic (hallucinations), and lack of auditability. Developers jump into code without frozen domain interfaces, leading to data-model drift.",
     approach:
-      "Building a semantic scoring engine utilizing fine-tuned embedding models to match parsed resume details (skills, tenure, certifications) against role constraints.",
+      "Designed and documented a 14-step architecture package with a formal Domain Freeze (Phase 0-13 roadmap), strict JSON schema validation gates, and an ADR (Architecture Decision Record) change-control process.",
     solution:
-      "An AI matching assistant that parses uploaded candidate profiles, extracts core credentials, and assigns a semantic compatibility score with clear pros/cons for recruiters — completely bypassing keywords-only screening.",
+      "An AI matching assistant built on structured domain contracts, strict guardrails (Phase 5), and semantic scoring pipelines. No feature code was written until contracts were frozen, ensuring predictability and zero AI compliance drift.",
     outcomes: [
-      "Semantic candidate-to-job matching replacing fragile keywords-based resume scanners",
-      "Auto-scoring index based on certifications, experience length, and skill proximity",
-      "Recruiter explanation panel detailing key reasons for match approval or warnings",
-      "Pipeline integration with applicant tracking systems (ATS) and local file storage",
+      "14-part formal architecture package (from SRS to deployment architecture)",
+      "Domain Freeze contract package (contracts/) serving as the implementation source of truth",
+      "Change-control workflow enforced via Architecture Decision Records (ADRs) under adr/",
+      "AI matching pipeline with Phase 5 guardrails blocking unvalidated profile exports",
     ],
     context:
-      "Currently under active development — designed to integrate seamlessly alongside profile onboarding connectors (like SyncFlow).",
+      "Conceived as a developer-first, audit-compliant matching engine with a principal-engineer-reviewed safety and deployment blueprint.",
     capabilities: [
-      "Semantic Search",
-      "Resume Parsing",
-      "Recruiting Automation",
-      "AI Scoring Pipelines",
+      "Domain-driven design",
+      "Contract-first API design",
+      "AI guardrails pipeline",
+      "Change control & ADRs",
     ],
-    tech: ["TypeScript", "Python", "Next.js", "Gemini API", "Vector Databases"],
+    tech: ["TypeScript", "JSON Schema", "Gemini API", "Vector Databases", "Markdown Architecture"],
     architecture:
-      "Vector embeddings database layer coupled with Gemini LLM context windows to evaluate parsed profile documents against strict multi-role job requirements.",
+      "Strict contract-based monorepo layout (referenced in docs/03-folder-structure.md) where APIs, database schemas, and AI pipelines are validated against frozen contract definitions.",
     challenges: [
-      "Ensuring fair and bias-free scoring rules for non-traditional career paths",
-      "Parsing unstructured multi-column PDF layouts without layout data loss",
+      "Enforcing the approval gate so that no feature code is written prior to domain agreement",
+      "Integrating semantic resume scoring logic with deterministic validation guardrails (Phase 5)",
     ],
     contributions: [
-      "Architecting the resume vector embedding and ranking schema",
-      "Designing the recruiter explanation dashboard and visual match indicators",
+      "Authored the complete 14-part architecture package and sequence design",
+      "Defined the engineering rulebook and change control pipeline (ADRs)",
+      "Built the visual system blueprints and schema validation scripts",
     ],
     lessons: [
-      "AI screening should assist recruiters with semantic reasoning, not hide the underlying data behind a black box.",
+      "When the system deals with hiring compliance, code quality begins with frozen interfaces — not exploratory coding.",
     ],
     engagement: "founder",
     featured: true,
